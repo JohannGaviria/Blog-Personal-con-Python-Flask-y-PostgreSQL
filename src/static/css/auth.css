@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background-color: #fbf8ee;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.welcome-container {
+    flex: 2;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.welcome-message {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #4c585e;
+    font-size: 1.5rem;
+    text-align: center;
+    z-index: 1;
+    width: 75%;
+}
+
+.keyword {
+    color: #d6a561;
+    font-weight: bold;
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+}
+
+form {
+    margin: 20px;
+}
+
+form h2 {
+    color: #d6a561;
+    font-size: 36px;
+}
+
+.form-group {
+    margin: 20px 0;
+    position: relative;
+    color: #575757a8;
+}
+
+.photo-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-photo {
+    justify-content: center;
+    margin-top: 15px;
+    position: relative;
+    display: inline-block;
+    width: 125px;
+    height: 125px;
+    background-color: #727a78;
+    border-radius: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    border: 0;
+}
+
+.btn-photo i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 80px;
+}
+
+.btn-photo:hover {
+    opacity: 0.7;
+}
+
+.photo-preview {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+#photo-input {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.form-input {
+    width: 100%;
+    font-size: 1rem;
+    color: #706c6c;
+    padding: .6em .3em;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #4c585e;
+}
+
+.form-input:hover {
+    border-bottom: 1.5px solid #282d31;
+}
+
+.form-label {
+    color: #282d3181;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 5px;
+    transform: translateY(10px);
+    transition: transform .5s, color .3s;
+}
+
+.fas {
+    color: #282d3181;
+    position: absolute;
+    top: 0;
+    left: 90%;
+    transform: translateY(10px);
+}
+
+.form-input:focus + .form-label {
+    transform: translateY(-12px) scale(.7);
+    transform-origin: top left;
+    color: #3498db;
+}
+
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+    transform: translateY(-12px) scale(.7);
+    transform-origin: top left;
+    color: #282d31;
+}
+
+.form-input:focus,
+.form-input:not(:placeholder-shown){
+    border-bottom: 1.8px solid #282d31;
+}
+
+.link-access {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #d6a561;
+}
+
+.link-access a {
+    text-decoration: none;
+    color: #db993b;
+}
+
+.link-access:hover a {
+    text-decoration: underline;
+    color: #dd9126;
+}
+
+form button {
+    background-color: #d6a561;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: #fbf8ee;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #8a6531;
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+    body {
+        overflow: auto;
+    }
+
+    .container {
+        flex-direction: column; /* Cambia la dirección de flexbox en pantallas pequeñas */
+    }
+
+    .form-container,
+    .welcome-container {
+        flex: 1; /* Hacer ambos elementos ocupar el espacio completo en pantallas pequeñas */
+        padding: 10px; /* Reducir el espacio alrededor de los elementos */
+    }
+
+    .welcome-image {
+        height: auto; /* Evita que la imagen se estire en pantallas pequeñas */
+    }
+
+    .welcome-message {
+        color: #d6a561;
+    }
+    
+    .keyword {
+        color: #4c585e;
+    }
+}
