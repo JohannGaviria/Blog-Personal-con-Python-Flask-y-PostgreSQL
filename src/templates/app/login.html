@@ -19,13 +19,13 @@
                 <div class="form-group">
                     <input type="text" name="email" id="email" class="form-input" placeholder=" ">
                     <label for="email" class="form-label">Email:</label>
-                    <i class="fas fa-envelope"></i>
+                    <i class="fas fa-envelope input-icon"></i>
                 </div>
 
                 <div class="form-group">
                     <input type="password" name="password" id="password" class="form-input" placeholder=" ">
                     <label for="password" class="form-label">Contraseña:</label>
-                    <i class="fas fa-lock" id="togglePassword" onclick="togglePasswordVisibility()"></i>
+                    <i class="fas fa-lock input-icon" id="togglePassword" onclick="togglePasswordVisibility()"></i>
                 </div>
 
                 <p class="link-access">¿No tienes una cuenta? <a href="{{ url_for('register_blueprint.register') }}">Registrate desde aquí.</a></p>
@@ -42,6 +42,8 @@
         </div>
         
     </div>
+
+    {% include('includes/custom.html') %}
 
     <script src="{{ url_for('static', filename='js/register.js') }}"></script>    
     <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>    

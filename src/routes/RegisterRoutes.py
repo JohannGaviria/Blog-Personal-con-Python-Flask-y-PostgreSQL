@@ -21,25 +21,28 @@ def register():
         password = request.form['password']
         registration_date = datetime.date.today().strftime("%d/%m/%Y")
 
-        connection = connectionDB()
-        cursor = connection.cursor()
+        credential_validation = CredentialValidation(name, username, photo, email, password)
+        credential_validation.validator_data()
 
-        try:
-            credential_validation = CredentialValidation(name, username, photo, email, password)
-            credential_validation_errors = credential_validation.validator_data()
+        if not credential_validation.has_errors():
+            connection = connectionDB()
+            cursor = connection.cursor()
 
-            if not credential_validation_errors:
+            try:
                 register_user = RegisterUser(name, username, photo, email, password, registration_date, bio="Ingrese su biografia...", role="user", status="inactive", last_login=None)
                 register_user.register_to_db(connection, config('UPLOAD_FOLDER_USER'))
-                flash('Registro completado exitosamente.', 'succes')
+                flash('Registro completado exitosamente.', 'success')
+                return redirect(url_for('login_blueprint.login'))
 
-        except Exception as ex:
-            Logger.add_to_log("error", str(ex))
-            Logger.add_to_log("error", traceback.format_exc())
+            except Exception as ex:
+                Logger.add_to_log("error", str(ex))
+                Logger.add_to_log("error", traceback.format_exc())
 
-        finally:
-            cursor.close()
-            connection.close()
+            finally:
+                cursor.close()
+                connection.close()
+        else:
+            for error in credential_validation.get_errors():
+                flash(error['message'], error['category'])
 
-        return redirect(url_for('login_blueprint.login'))
     return render_template('app/register.html')

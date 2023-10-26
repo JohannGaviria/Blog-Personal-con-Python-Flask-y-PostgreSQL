@@ -147,7 +147,7 @@ form h2 {
     transition: transform .5s, color .3s;
 }
 
-.fas {
+.input-icon {
     color: #282d3181;
     position: absolute;
     top: 0;

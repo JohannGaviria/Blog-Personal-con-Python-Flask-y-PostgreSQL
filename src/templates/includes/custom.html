@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+<body class="custom-container">
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="toast toast-{{ message[0] }}">
+                <div class="toast-content">
+                    <i class="fas fa-solid {% if 'success' in message[0] %} fa-check check {% endif %} {% if 'warning' in message[0] %} fas fa-exclamation-circle circle {% endif %} {% if 'danger' in message[0] %} fas fa-exclamation-triangle triangle {% endif %}"></i>
+                    <div class="message">
+                        <span class="text text-1">{{ message[0] }}</span>
+                        <span class="text text-2">{{ message[1] }}</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark close"></i>
+                <div class="progress progress-{{ message[0] }}"></div>
+            </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+</body>
+<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
