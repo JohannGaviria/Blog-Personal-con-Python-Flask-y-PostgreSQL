@@ -25,10 +25,10 @@ def register():
         credential_validation.validator_data()
 
         if not credential_validation.has_errors():
-            connection = connectionDB()
-            cursor = connection.cursor()
-
             try:
+                connection = connectionDB()
+                cursor = connection.cursor()
+
                 register_user = RegisterUser(name, username, photo, email, password, registration_date, bio="Ingrese su biografia...", role="user", status="inactive", last_login=None)
                 register_user.register_to_db(connection, config('UPLOAD_FOLDER_USER'))
                 flash('Registro completado exitosamente.', 'success')

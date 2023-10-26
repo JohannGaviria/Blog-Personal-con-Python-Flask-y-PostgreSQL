@@ -1,4 +1,3 @@
-from flask import flash
 from src.utils.Logger import Logger
 from src.auth.PasswordHandling import PasswordSecurity
 from src.auth.UploadHandle import UploadHandler
@@ -52,4 +51,33 @@ class LoginUser:
         self.email = email
         self.password = password
     
-    
+    def user_authentication(self, connection):
+        try:
+            cursor = connection.cursor()
+
+            select_query = "SELECT * FROM users WHERE email = %s"
+            data = (self.email,)
+
+            cursor.execute(select_query, data)
+            data_user = cursor.fetchone()
+
+            if data_user:
+                hash_password = data_user[5]
+
+                password_security = PasswordSecurity()
+                if password_security.verify_password(hash_password, self.password):
+                    return {
+                        'id_user': data_user[0],
+                        'name': data_user[1],
+                        'username': data_user[2],
+                        'photo': data_user[3],
+                        'email': data_user[4],
+                        'role': data_user[8]
+                    }
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+        
+        finally:
+            cursor.close()
