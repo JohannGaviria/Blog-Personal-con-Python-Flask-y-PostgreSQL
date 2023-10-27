@@ -1,7 +1,5 @@
 from flask import Blueprint, request, render_template, flash, session, redirect, url_for
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
-from flask_limiter import Limiter
-from flask_limiter.util import get_remote_address
 from src.database.connection import connectionDB
 from src.models.UserModel import LoginUser
 from src.utils.Logger import Logger
@@ -41,6 +39,7 @@ def login():
                 session['role'] = data_user['role']
 
                 flash(f"Bienvenido {session['username']}", 'success')
+                return redirect(url_for('index_blueprint.index'))
             else:
                 flash('Usuario o Contraseña Incorrectos.', 'warning')
         
