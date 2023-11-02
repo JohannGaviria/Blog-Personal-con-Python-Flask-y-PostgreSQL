@@ -1,3 +1,5 @@
+@import "root.css";
+
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +19,7 @@ body {
     display: flex;
     width: 100%;
     height: 100%;
-    background-color: #fbf8ee;
+    background-color: var(--color-background-light);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
 }
@@ -42,7 +44,7 @@ body {
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #4c585e;
+    color: var(--color-text-light);
     font-size: 1.5rem;
     text-align: center;
     z-index: 1;
@@ -50,7 +52,7 @@ body {
 }
 
 .keyword {
-    color: #d6a561;
+    color: var(--color-accent-light);
     font-weight: bold;
 }
 
@@ -64,14 +66,14 @@ form {
 }
 
 form h2 {
-    color: #d6a561;
+    color: var(--color-accent-light);
     font-size: 36px;
 }
 
 .form-group {
     margin: 20px 0;
     position: relative;
-    color: #575757a8;
+    color: var(--color-text-secondary-light);
 }
 
 .photo-content {
@@ -87,7 +89,7 @@ form h2 {
     display: inline-block;
     width: 125px;
     height: 125px;
-    background-color: #727a78;
+    background-color: var(--color-button-bg-light);
     border-radius: 50%;
     cursor: pointer;
     overflow: hidden;
@@ -130,15 +132,15 @@ form h2 {
     padding: .6em .3em;
     border: none;
     outline: none;
-    border-bottom: 1px solid #4c585e;
+    border-bottom: 1px solid var(--color-text-light);
 }
 
 .form-input:hover {
-    border-bottom: 1.5px solid #282d31;
+    border-bottom: 1.5px solid var(--color-border-hover-light);
 }
 
 .form-label {
-    color: #282d3181;
+    color: var(--color-border-light);
     cursor: pointer;
     position: absolute;
     top: 0;
@@ -148,64 +150,59 @@ form h2 {
 }
 
 .input-icon {
-    color: #282d3181;
+    color: var(--color-border-light);
     position: absolute;
     top: 0;
     left: 90%;
     transform: translateY(10px);
 }
 
-.form-input:focus + .form-label {
+/* .form-input:focus + .form-label {
     transform: translateY(-12px) scale(.7);
     transform-origin: top left;
-    color: #3498db;
-}
+    color: #ff0000;
+} */
 
 .form-input:focus + .form-label,
 .form-input:not(:placeholder-shown) + .form-label {
     transform: translateY(-12px) scale(.7);
     transform-origin: top left;
-    color: #282d31;
+    color: var(--color-border-hover-light);
 }
 
 .form-input:focus,
 .form-input:not(:placeholder-shown){
-    border-bottom: 1.8px solid #282d31;
+    border-bottom: 1.8px solid var(--color-border-hover-light);
 }
 
 .link-access {
     text-align: center;
     margin-bottom: 10px;
-    color: #d6a561;
+    color: var(--color-accent-light);
 }
 
 .link-access a {
     text-decoration: none;
-    color: #db993b;
+    color: var(--color-link-light);
 }
 
 .link-access:hover a {
     text-decoration: underline;
-    color: #dd9126;
+    color: var(--color-link-hover-light);
 }
 
 form button {
-    background-color: #d6a561;
+    background-color: var(--color-accent-light);
     padding: 10px;
     border-radius: 5px;
     border: none;
-    color: #fbf8ee;
+    color: var(--color-background-light);
     cursor: pointer;
 }
 
 form button:hover {
-    background-color: #8a6531;
+    background-color: var(--color-button-hover-bg-light);
 }
-
-
-
-
-
 
 
 @media (max-width: 768px) {
@@ -214,24 +211,24 @@ form button:hover {
     }
 
     .container {
-        flex-direction: column; /* Cambia la dirección de flexbox en pantallas pequeñas */
+        flex-direction: column;
     }
 
     .form-container,
     .welcome-container {
-        flex: 1; /* Hacer ambos elementos ocupar el espacio completo en pantallas pequeñas */
-        padding: 10px; /* Reducir el espacio alrededor de los elementos */
+        flex: 1;
+        padding: 10px;
     }
 
     .welcome-image {
-        height: auto; /* Evita que la imagen se estire en pantallas pequeñas */
+        height: auto;
     }
 
     .welcome-message {
-        color: #d6a561;
+        color: var(--color-accent-light);
     }
     
     .keyword {
-        color: #4c585e;
+        color: var(--color-text-light);
     }
 }
