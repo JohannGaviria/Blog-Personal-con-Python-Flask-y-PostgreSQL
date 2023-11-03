@@ -1,0 +1,76 @@
+@import "root.css";
+
+/* DEFAULT */
+.contenedor {
+    display: grid;
+    grid-template-columns: 250px auto 250px;
+    gap: 10px;
+}
+
+.left-column,
+.right-column {
+    padding: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.center-content {
+    padding: 10px;
+}
+
+
+/* LEFT COLUMN */
+.content-call-action {
+    background-color: var(--color-button-text-light);
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.community-description p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.community-description p:first-child {
+    font-weight: bold;
+    color: var(--color-border-focus-light);
+}
+
+.community-description p:nth-child(2) {
+    color: var(--color-button-bg-light);
+    margin-top: 5px;
+}
+
+.community-description span {
+    font-weight: bold;
+    color: var(--color-accent-light);
+}
+
+.action-buttons a {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+.action-buttons a:first-child {
+    margin-top: 5px;
+    border: 1px solid var(--color-link-light);
+    color: var(--color-link-light);
+}
+
+.action-buttons a:first-child:hover {
+    background-color: var(--color-link-light);
+    color: var(--color-background-light);
+}
+
+.action-buttons a:nth-child(2) {
+    background-color: var(--color-background-light);
+    color: var(--color-link-light);
+}
+
+.action-buttons a:nth-child(2):hover {
+    background-color: var(--color-accent-light);
+    color: var(--color-background-light);    
+}
