@@ -72,5 +72,85 @@
 
 .action-buttons a:nth-child(2):hover {
     background-color: var(--color-accent-light);
-    color: var(--color-background-light);    
+    color: var(--color-background-light);
+}
+
+
+/* CENTER CONTENT */
+
+.filter-container {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.filter-button {
+    background-color: var(--color-text-secondary-light);
+    color: var(--color-button-text-light);
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-button:last-child {
+    margin-right: 0;
+}
+
+.select-filter,
+.filter-button:hover {
+    background-color: var(--color-border-hover-light);
+    color: var(--color-background-light);
+}
+
+.close-icon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: right;
+    margin-left: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    color: var(--color-border-hover-light);
+}
+
+
+/* RIGTH COLUMN */
+
+
+/* DESING RESPONSIVE */
+
+/* Estilos para tabletas */
+@media (min-width: 768px) and (max-width: 1070px) {
+    .contenedor {
+        grid-template-columns: 200px auto;
+    }
+
+    .right-column {
+        display: none;
+    }
+
+}
+
+
+/* moviles */
+@media (max-width: 767px) {
+    .contenedor {
+        grid-template-columns: auto;
+        grid-template-areas: "center-content";
+    }
+
+    .left-column,
+    .right-column {
+        display: none;
+    }
+
+    .center-content {
+        grid-area: center-content;
+    }
 }

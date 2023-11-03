@@ -1,0 +1,37 @@
+{% include "includes/header.html" %}
+
+<main>
+
+    <div class="contenedor">
+        <div class="left-column">
+            <div class="content-call-action">
+                <div class="community-description">
+                    <p><span>BPPFP</span> te da la bienvenida a su comunidad de más de <span>1,098,890</span> personas</p>
+                    <p>que comparten sus pensamientos sobre una amplia variedad de temas.</p>
+                </div>
+                <div class="action-buttons">
+                    <a href="{{ url_for('register_blueprint.register') }}">Únete Ahora</a>
+                    <a href="{{ url_for('login_blueprint.login') }}">Iniciar Sesión</a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="center-content">
+            <div class="filter-container">
+                <div class="filter-buttons">
+                    <a href="#" class="filter-button" id="filter-recent"><i class="fas fa-clock"></i> Reciente</a>
+                    <a href="#" class="filter-button" id="filter-relevant"><i class="fas fa-star"></i> Relevante</a>
+                </div>
+                <a href="#" class="close-icon" id="close-icon"><i class="fas fa-times"></i></a>
+            </div>
+            
+        </div>
+        <div class="right-column">
+            
+        </div>
+            
+    </div>
+    
+</main>
+
+{% include "includes/footer.html" %}
