@@ -45,4 +45,4 @@ def register():
             for error in credential_validation.get_errors():
                 flash(error['message'], error['category'])
 
-    return render_template('app/register.html')
+    return render_template('app/register.html', name_page="Registro")

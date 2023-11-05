@@ -50,4 +50,4 @@ def login():
         finally:
             connection.close()
         
-    return render_template('app/login.html')
+    return render_template('app/login.html', name_page="Inicio Sesion")
