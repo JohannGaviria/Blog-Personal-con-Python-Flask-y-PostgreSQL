@@ -24,6 +24,7 @@
     background-color: var(--color-button-text-light);
     padding: 20px;
     border-radius: 5px;
+    margin-bottom: 20px;
 }
 
 .community-description p {
@@ -75,6 +76,52 @@
     color: var(--color-background-light);
 }
 
+.create-post {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--color-button-text-light);
+}
+
+.button-create a {
+    display: inline-block;
+    background-color: var(--color-link-light);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button-create a:hover {
+    background-color: var(--color-accent-light);
+}
+
+.button-create i {
+    margin-right: 10px;
+}
+
+.create-post-fixed {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    left: 2%;
+    padding: 20px;
+    background-color: var(--color-link-light);
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+
+}
+
+.create-post-fixed:hover {
+    background-color: var(--color-link-hover-light);
+}
+
+.create-post-fixed a {
+    font-size: 24px;
+    color: var(--color-background-light);
+}
+
+
 
 /* CENTER CONTENT */
 
@@ -121,6 +168,49 @@
 
 
 /* RIGTH COLUMN */
+
+.followings-container,
+.follows-container {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    background-color: var(--color-button-text-light);
+    padding: 10px;
+}
+
+.followings-container h3,
+.follows-container h3 {
+    text-align: center;
+    color: var(--color-link-light);
+}
+
+.following-content,
+.follow-content {
+    display: flex;
+    align-items: cente;
+    background-color: var(--color-background-light);
+    margin: 10px;
+    border-radius: 25px;
+}
+
+.following-content a,
+.follow-content a {
+    color: var(--color-button-bg-light);
+}
+
+.following-content button,
+.follow-content button {
+    border: none;
+    background-color: transparent;
+    color: var(--color-button-bg-light);
+    font-size: 12px;
+}
+
+.following-content:hover,
+.follow-content:hover {
+    background-color: var(--color-button-text-light);
+}
+
 
 
 /* DESING RESPONSIVE */

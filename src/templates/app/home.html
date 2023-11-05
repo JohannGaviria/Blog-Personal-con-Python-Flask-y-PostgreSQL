@@ -14,7 +14,32 @@
                     <a href="{{ url_for('login_blueprint.login') }}">Iniciar Sesión</a>
                 </div>
             </div>
-            
+
+            <div class="create-post">
+                <div class="button-create">
+                    <a href="{{ url_for('newPost_blueprint.new_post') }}"><i class="fas fa-edit"></i> Nuevo Post</a>
+                </div>
+            </div>
+
+            <div class="create-post-fixed" id="buttonFixed">
+                <a href="{{ url_for('newPost_blueprint.new_post') }}"><i class="fas fa-edit"></i></a>
+            </div>
+
+            <script>
+                const buttonCreate = document.querySelector('.button-create');
+                const buttonCreatePosition = buttonCreate.getBoundingClientRect().top;
+                const buttonFixed = document.getElementById('buttonFixed');
+
+                window.addEventListener('scroll', () => {
+                if (window.scrollY >= buttonCreatePosition) {
+                    // Obtén una referencia al elemento por su id
+                    buttonFixed.style.display = 'block';
+                } else {
+                    buttonFixed.style.display = 'none';
+                }
+                });
+
+            </script>
         </div>
         <div class="center-content">
             <div class="filter-container">
@@ -85,10 +110,10 @@
                             </div>
                             <div class="post-reaction">
                                 <div class="comments">
-                                    <a href="#"><i class="fas fa-comment"></i> Comentarios</a>
+                                    <a href="#"><i class="far fa-comment"></i> Comentarios</a>
                                 </div>
                                 <div class="favorite">
-                                    <a href="#"><i class="fas fa-bookmark"></i> Favorito</a>
+                                    <a href="#"><i class="far fa-bookmark"></i> Favorito</a>
                                 </div>
                                 <div class="time-read">
                                     <p><i class="fas fa-book"></i> 2 min</p>
@@ -160,10 +185,10 @@
                             </div>
                             <div class="post-reaction">
                                 <div class="comments">
-                                    <a href="#"><i class="fas fa-comment"></i> Comentarios</a>
+                                    <a href="#"><i class="far fa-comment"></i> Comentarios</a>
                                 </div>
                                 <div class="favorite">
-                                    <a href="#"><i class="fas fa-bookmark"></i> Favorito</a>
+                                    <a href="#"><i class="far fa-bookmark"></i> Favorito</a>
                                 </div>
                                 <div class="time-read">
                                     <p><i class="fas fa-book"></i> 2 min</p>
@@ -177,6 +202,43 @@
         </div>
         <div class="right-column">
             
+            <div class="followings-container">
+                <h3><i class="fas fa-user-check"></i> Siguiendo</h3>
+                
+                <div class="following-content">
+                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                    <div class="info-text">
+                        <p class="author-name"><a href="#">Conor McGregor</a></p>
+                        <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
+                    </div>
+                </div>
+                <div class="following-content">
+                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                    <div class="info-text">
+                        <p class="author-name"><a href="#">Conor McGregor</a></p>
+                        <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="follows-container">
+                <h3><i class="fas fa-user-plus"></i> Seguir</h3>
+
+                <div class="follow-content">
+                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                    <div class="info-text">
+                        <p class="author-name"><a href="#">Conor McGregor</a></p>
+                        <button><i class="fas fa-user-plus"></i> Seguir</button>
+                    </div>
+                </div>
+                <div class="follow-content">
+                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                    <div class="info-text">
+                        <p class="author-name"><a href="#">Conor McGregor</a></p>
+                        <button><i class="fas fa-user-plus"></i> Seguir</button>
+                    </div>
+                </div>
+            </div>
         </div>
             
     </div>
