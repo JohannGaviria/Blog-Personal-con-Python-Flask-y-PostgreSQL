@@ -20,3 +20,30 @@ closeIcon.addEventListener('click', () => {
     relevantButton.classList.remove('select-filter');
     closeIcon.style.display = 'none';
 });
+
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+const buttonCreate = document.querySelector('.button-create');
+const buttonCreatePosition = buttonCreate.getBoundingClientRect().top;
+const buttonFixed = document.getElementById('buttonFixed');
+
+window.addEventListener('scroll', () => {
+    if (window.scrollY >= buttonCreatePosition) {
+        buttonFixed.style.display = 'block';
+    } else {
+        buttonFixed.style.display = 'none';
+    }
+});
+
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+var elemento = document.getElementById('author-details-hidden');
+var boton = document.getElementById('button-author-name');
+
+boton.addEventListener('click', function () {
+    elemento.style.display = 'block';
+});
