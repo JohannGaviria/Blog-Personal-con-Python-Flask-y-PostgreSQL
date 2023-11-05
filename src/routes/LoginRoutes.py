@@ -39,7 +39,7 @@ def login():
                 session['role'] = data_user['role']
 
                 flash(f"Bienvenido {session['username']}", 'success')
-                return redirect(url_for('index_blueprint.index'))
+                return redirect(url_for('home_blueprint.home'))
             else:
                 flash('Usuario o Contraseña Incorrectos.', 'warning')
         
