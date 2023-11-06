@@ -1,5 +1,103 @@
 {% include('includes/head.html') %}
 
+<div class="new-post-container">
+    <div class="new-post-btn">
+        <div class="post-visualize">
+            <button type="button"><i class="fas fa-edit"></i> Editar</button>
+            <button type="button"><i class="fas fa-eye"></i> Ver</button>
+        </div>
+        <div class="post-cancel">
+            <button type="button"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
 
+    <div class="new-post-form">
+        <form action="" method="POST" enctype="multipart/form-data">
+
+            <div class="form-post-top"> 
+                <div class="form-post-image-preview">
+                    <img id="image-preview" src="#" class="image-preview">
+                    <div class="form-post-method">
+                        <button type="button" id="btn-change" onclick="openFileExplorer('image-input')"><i class="fas fa-edit"></i> Cambiar</button>
+                        <button type="button" id="btn-delete"><i class="fas fa-trash-alt"></i> Eliminar</button>
+                    </div>
+                </div>
+
+                <div id="form-post-image" class="form-post-image">
+                    <label for="image" class="image-label" onclick="openFileExplorer('image-input')">Imagen de Portada</label>
+                    <input type="file" id="image-input" name="image" accept="image/*" style="display: none;" onchange="displayImage(event)">
+                </div>
+                    
+                <div class="form-post-title">
+                    <textarea name="title" id="title" class="auto-resize" placeholder="Agrega el Titulo del Post"></textarea>
+                </div>
+
+                <div class="form-post-hashtag">
+                    <div class="hashtag-list-content">
+                        <ul class="hashtag-list"></ul>
+                    </div>
+                    <div class="hashtag-form">
+                        <input type="text" name="hashtag" id="hashtag" placeholder="Agrega Hasta 5 Hashtags">
+                    </div>
+                    <div class="hashtag-result">
+                        <div class="result-element">
+                            <p id="result" class="result"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-post-bottom">    
+                <div class="form-post-elements">
+
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('**', '**')"><i class="fas fa-bold"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('*', '*')"><i class="fas fa-italic"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('[Link Text](URL)', '')"><i class="fas fa-link"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('1. ', '')"><i class="fas fa-list-ol"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('* ', '')"><i class="fas fa-list-ul"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('### ', '')"><i class="fas fa-heading"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('> ', '')"><i class="fas fa-quote-left"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('```', '```')"><i class="fas fa-code"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('<details><summary>Summary</summary>\n\nContent</details>', '')"><i class="fas fa-window-maximize"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('![Alt Text](Image URL)', '')"><i class="fas fa-image"></i></button>
+                    </div>
+                    <div class="post-element">
+                        <button type="button" onclick="insertMarkdown('---\n', '')"><i class="fas fa-minus"></i></button>
+                    </div>
+
+                </div>
+
+                <div class="form-post-content">
+                    <textarea name="content" id="content" placeholder="Ingresa el Contenido de tu Post"></textarea>
+                </div>
+            </div>
+            <div class="form-post-action">
+                <button type="submit">Publicar Post</button>
+                <button type="button">Revertir Cambios</button>
+            </div>
+
+        </form>
+    </div>
+</div>
 
 {% include('includes/footer.html') %}

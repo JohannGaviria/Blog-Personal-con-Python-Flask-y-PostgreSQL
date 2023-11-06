@@ -10,6 +10,3 @@ function displayPhoto(event) {
 
     reader.readAsDataURL(file);
 }
-function openFileExplorer() {
-    document.getElementById('photo').click();
-}
