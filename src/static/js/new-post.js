@@ -22,13 +22,24 @@ function addHashtagToList(inputValue) {
             alert('No puedes agregar más de 5 hashtags.');
         } else {
             const listItem = document.createElement('li');
-            listItem.textContent = `#${inputValue}`;
+            const hashtagText = document.createElement('span');
+            hashtagText.textContent = `#${inputValue}`;
+
+            const closeIcon = document.createElement('i');
+            closeIcon.classList.add('fas', 'fa-times');
+
+            listItem.appendChild(hashtagText);
+            listItem.appendChild(closeIcon);
 
             hashtagList.appendChild(listItem);
 
             hashtagInput.value = '';
             result.textContent = '';
             hashtagResult.style.display = 'none';
+
+            closeIcon.addEventListener('click', () => {
+                listItem.remove();
+            });
         }
     }
 }
@@ -47,6 +58,7 @@ hashtagResult.addEventListener('click', () => {
         addHashtagToList(inputValue.slice(1));
     }
 });
+
 
 //-------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------
@@ -73,6 +85,7 @@ function displayImage(event) {
     const btnDelete = document.getElementById('btn-delete');
     const btnChange = document.getElementById('btn-change');
     const formPostImage = document.getElementById('form-post-image');
+    const imageInput = document.getElementById('image-input');
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -85,7 +98,18 @@ function displayImage(event) {
     };
 
     reader.readAsDataURL(file);
+
+    btnDelete.addEventListener('click', function () {
+        preview.setAttribute('src', '');
+        preview.style.display = 'none';
+        btnDelete.style.display = 'none';
+        btnChange.style.display = 'none';
+        formPostImage.style.display = 'block';
+
+        imageInput.value = "";
+    });
 }
+
 
 //-------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------
@@ -96,4 +120,60 @@ document.addEventListener('input', function (e) {
         e.target.style.height = 'auto';
         e.target.style.height = (e.target.scrollHeight) + 'px';
     }
+});
+
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+document.getElementById("btn-edit").addEventListener("click", function () {
+    document.getElementById("edit-post-container").style.display = "block";
+    document.getElementById("view-post-container").style.display = "none";
+});
+
+document.getElementById("btn-view").addEventListener("click", function () {
+    document.getElementById("view-post-container").style.display = "block";
+    document.getElementById("edit-post-container").style.display = "none";
+});
+
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+function openModal() {
+    const modal = document.getElementById('cancellation-warning');
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+    const modal = document.getElementById('cancellation-warning');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+document.getElementById('post-cancel').addEventListener('click', openModal);
+document.getElementById('close-modal').addEventListener('click', closeModal);
+document.getElementById('continue-editing-button').addEventListener('click', closeModal);
+
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", function () {
+    const formPost = document.getElementById("form-post");
+    const revertChange = document.getElementById("revert-change");
+    const preview = document.getElementById('image-preview');
+    const btnDelete = document.getElementById('btn-delete');
+    const btnChange = document.getElementById('btn-change');
+    const formPostImage = document.getElementById('form-post-image');
+
+    revertChange.addEventListener("click", function () {
+        preview.setAttribute('src', '');
+        preview.style.display = 'none';
+        btnDelete.style.display = 'none';
+        btnChange.style.display = 'none';
+        formPostImage.style.display = 'block';
+        formPost.reset();
+    });
 });

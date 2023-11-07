@@ -1,18 +1,17 @@
 {% include('includes/head.html') %}
 
-<div class="new-post-container">
-    <div class="new-post-btn">
-        <div class="post-visualize">
-            <button type="button"><i class="fas fa-edit"></i> Editar</button>
-            <button type="button"><i class="fas fa-eye"></i> Ver</button>
-        </div>
-        <div class="post-cancel">
-            <button type="button"><i class="fas fa-times"></i></button>
-        </div>
+<div id="new-post-container" class="new-post-btn">
+    <div class="post-visualize">
+        <button type="button" id="btn-edit"><i class="fas fa-edit"></i> Editar</button>
+        <button type="button" id="btn-view"><i class="fas fa-eye"></i> Ver</button>
     </div>
-
+    <div class="post-cancel">
+        <button type="button" id="post-cancel"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+<div id="edit-post-container" class="new-post-container">
     <div class="new-post-form">
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="" method="get" enctype="multipart/form-data" id="form-post">
 
             <div class="form-post-top"> 
                 <div class="form-post-image-preview">
@@ -52,37 +51,37 @@
                 <div class="form-post-elements">
 
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('**', '**')"><i class="fas fa-bold"></i></button>
+                        <button type="button" onclick="insertMarkdown('**', '**')" title="Texto Negrita"><i class="fas fa-bold"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('*', '*')"><i class="fas fa-italic"></i></button>
+                        <button type="button" onclick="insertMarkdown('*', '*')" title="Texto Crusriva"><i class="fas fa-italic"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('[Link Text](URL)', '')"><i class="fas fa-link"></i></button>
+                        <button type="button" onclick="insertMarkdown('[Link Text](URL)', '')" title="Enlaces"><i class="fas fa-link"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('1. ', '')"><i class="fas fa-list-ol"></i></button>
+                        <button type="button" onclick="insertMarkdown('1. ', '')" title="Lista Ordenada"><i class="fas fa-list-ol"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('* ', '')"><i class="fas fa-list-ul"></i></button>
+                        <button type="button" onclick="insertMarkdown('* ', '')" title="Lista Desordenada"><i class="fas fa-list-ul"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('### ', '')"><i class="fas fa-heading"></i></button>
+                        <button type="button" onclick="insertMarkdown('### ', '')" title="Subtitulo"><i class="fas fa-heading"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('> ', '')"><i class="fas fa-quote-left"></i></button>
+                        <button type="button" onclick="insertMarkdown('> ', '')" title="Cita"><i class="fas fa-quote-left"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('```', '```')"><i class="fas fa-code"></i></button>
+                        <button type="button" onclick="insertMarkdown('```', '```')" title="Linea de Codigo"><i class="fas fa-code"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('<details><summary>Summary</summary>\n\nContent</details>', '')"><i class="fas fa-window-maximize"></i></button>
+                        <button type="button" onclick="insertMarkdown('<details><summary>Summary</summary>\n\nContent</details>', '')" title="Bloque de Codigo"><i class="fas fa-window-maximize"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('![Alt Text](Image URL)', '')"><i class="fas fa-image"></i></button>
+                        <button type="button" onclick="insertMarkdown('![Alt Text](Image URL)', '')" title="Imagen"><i class="fas fa-image"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('---\n', '')"><i class="fas fa-minus"></i></button>
+                        <button type="button" onclick="insertMarkdown('---\n', '')" title="Linea"><i class="fas fa-minus"></i></button>
                     </div>
 
                 </div>
@@ -93,10 +92,34 @@
             </div>
             <div class="form-post-action">
                 <button type="submit">Publicar Post</button>
-                <button type="button">Revertir Cambios</button>
+                <button type="button" id="revert-change">Revertir Cambios</button>
             </div>
 
         </form>
+    </div>
+</div>
+
+<div id="view-post-container" style="display: none;">
+
+</div>
+<!-- 
+<div class="cancellation-warning" id="cancellation-warning">
+    .cancellation
+</div> -->
+
+<div class="cancellation-warning-modal" id="cancellation-warning">
+    <div class="cancellation-container">
+        <div class="cancellation-top">
+            <span class="close-button" id="close-modal">&times;</span>
+            <i class="fas fa-exclamation-circle"></i>
+            <p>¿Estás seguro de que deseas cancelar la edición del post?</p>
+        </div>
+        <hr>
+        <div class="cancellation-content">
+            <p>Tu contribución es invaluable para nuestra comunidad.</p>
+            <a href="{{ url_for('home_blueprint.home') }}">Cancelar Publicación</a>
+            <button type="button" id="continue-editing-button">Continuar Editando</button>
+        </div>
     </div>
 </div>
 
