@@ -1,64 +1,63 @@
-const hashtagInput = document.getElementById('hashtag');
-const hashtagList = document.querySelector('.hashtag-list');
-const hashtagResult = document.querySelector('.hashtag-result');
-const result = document.getElementById('result');
-const maxHashtags = 5;
+// const hashtagInput = document.getElementById('hashtag');
+// const hashtagList = document.querySelector('.hashtag-list');
+// const hashtagResult = document.querySelector('.hashtag-result');
+// const result = document.getElementById('result');
+// const maxHashtags = 5;
 
-hashtagInput.addEventListener('input', (e) => {
-    const inputValue = e.target.value.trim();
+// hashtagInput.addEventListener('input', (e) => {
+//     const inputValue = e.target.value.trim();
 
-    if (inputValue !== '') {
-        hashtagResult.style.display = 'block';
-        result.textContent = `#${inputValue}`;
-    } else {
-        hashtagResult.style.display = 'none';
-        result.textContent = '';
-    }
-});
+//     if (inputValue !== '') {
+//         hashtagResult.style.display = 'block';
+//         result.textContent = `#${inputValue}`;
+//     } else {
+//         hashtagResult.style.display = 'none';
+//         result.textContent = '';
+//     }
+// });
 
-function addHashtagToList(inputValue) {
-    if (inputValue !== '') {
-        if (hashtagList.querySelectorAll('li').length >= maxHashtags) {
-            alert('No puedes agregar más de 5 hashtags.');
-        } else {
-            const listItem = document.createElement('li');
-            const hashtagText = document.createElement('span');
-            hashtagText.textContent = `#${inputValue}`;
+// function addHashtagToList(inputValue) {
+//     if (inputValue !== '') {
+//         if (hashtagList.querySelectorAll('li').length >= maxHashtags) {
+//             alert('No puedes agregar más de 5 hashtags.');
+//         } else {
+//             const listItem = document.createElement('li');
+//             const hashtagText = document.createElement('span');
+//             hashtagText.textContent = `#${inputValue}`;
 
-            const closeIcon = document.createElement('i');
-            closeIcon.classList.add('fas', 'fa-times');
+//             const closeIcon = document.createElement('i');
+//             closeIcon.classList.add('fas', 'fa-times');
 
-            listItem.appendChild(hashtagText);
-            listItem.appendChild(closeIcon);
+//             listItem.appendChild(hashtagText);
+//             listItem.appendChild(closeIcon);
 
-            hashtagList.appendChild(listItem);
+//             hashtagList.appendChild(listItem);
 
-            hashtagInput.value = '';
-            result.textContent = '';
-            hashtagResult.style.display = 'none';
+//             hashtagInput.value = '';
+//             result.textContent = '';
+//             hashtagResult.style.display = 'none';
 
-            closeIcon.addEventListener('click', () => {
-                listItem.remove();
-            });
-        }
-    }
-}
+//             closeIcon.addEventListener('click', () => {
+//                 listItem.remove();
+//             });
+//         }
+//     }
+// }
 
-hashtagInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault();
-        const inputValue = hashtagInput.value.trim();
-        addHashtagToList(inputValue);
-    }
-});
+// hashtagInput.addEventListener('keydown', (e) => {
+//     if (e.key === 'Enter') {
+//         e.preventDefault();
+//         const inputValue = hashtagInput.value.trim();
+//         addHashtagToList(inputValue);
+//     }
+// });
 
-hashtagResult.addEventListener('click', () => {
-    const inputValue = result.textContent.trim();
-    if (inputValue) {
-        addHashtagToList(inputValue.slice(1));
-    }
-});
-
+// hashtagResult.addEventListener('click', () => {
+//     const inputValue = result.textContent.trim();
+//     if (inputValue) {
+//         addHashtagToList(inputValue.slice(1));
+//     }
+// });
 
 //-------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------
@@ -89,6 +88,8 @@ function displayImage(event) {
     const file = event.target.files[0];
     const reader = new FileReader();
 
+    var viewImage = document.getElementById('view-image');
+
     reader.onload = function (e) {
         preview.setAttribute('src', e.target.result);
         preview.style.display = 'block';
@@ -106,10 +107,11 @@ function displayImage(event) {
         btnChange.style.display = 'none';
         formPostImage.style.display = 'block';
 
+        viewImage.setAttribute('src', '');
+
         imageInput.value = "";
     });
 }
-
 
 //-------------------------------------------------------------------------------------------------------------------
 //-------------------------------------------------------------------------------------------------------------------
@@ -134,6 +136,31 @@ document.getElementById("btn-edit").addEventListener("click", function () {
 document.getElementById("btn-view").addEventListener("click", function () {
     document.getElementById("view-post-container").style.display = "block";
     document.getElementById("edit-post-container").style.display = "none";
+
+    const imageInput = document.getElementById('image-input');
+    const viewImage = document.getElementById('view-image');
+    const titlePost = document.getElementById('title').value;
+    
+    if (imageInput.files && imageInput.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function (e) {
+            viewImage.src = e.target.result;
+            viewImage.style.display = 'block';
+        };
+        
+        reader.readAsDataURL(imageInput.files[0]);
+    }
+    
+    document.getElementById('view-title').innerText = titlePost;
+    
+    const contentPost = document.getElementById('content').value;
+    var converter = new showdown.Converter();
+    var md = contentPost;
+    var html = converter.makeHtml(md);
+    
+    document.getElementById('content-post').innerHTML = html;
+
 });
 
 //-------------------------------------------------------------------------------------------------------------------
