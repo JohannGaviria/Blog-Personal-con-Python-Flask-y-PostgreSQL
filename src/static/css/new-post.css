@@ -44,7 +44,8 @@
     border-radius: 10px;
 }
 
-.new-post-form form {
+.new-post-form form,
+.view-post-content {
     width: 65%;
     height: 100%;
     margin: auto;
@@ -238,8 +239,68 @@
     background-color: var(--color-border-focus-light);
 }
 
+.learn-markdown-link {
+    float: inline-end;
+    margin-right: 40px;
+}
+
+.learn-markdown-link a {
+    color: var(--color-background-light);
+}
+
 .form-post-action button:hover {
     background-color: var(--color-border-hover-light);
+}
+
+.view-post-image-preview {
+    width: 100%
+}
+
+.view-image {
+    display: none;
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+}
+
+.view-post-title {
+    width: 100%;
+}
+
+.view-title {
+    width: 100%;
+    text-align: center;
+    font-size: 5vh;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--color-border-focus-light);
+}
+
+.view-post-bottom {
+    width: 100%;
+}
+
+.content-post {
+    width: 85%;
+    margin: auto;
+    word-wrap: break-word;
+}
+
+#content-post {
+    white-space: pre-wrap;
+}
+
+#content-post ul {
+    margin-left: 20px;
+    color: var(--color-text-secundary-light);
+}
+
+#content-post h1,h2,h3,h4,h5,h6,p {
+    color: var(--color-border-hover-light);
+}
+
+#content-post p {
+    /* color: var(--color-text-light); */
 }
 
 .cancellation-warning-modal {

@@ -1,5 +1,5 @@
 {% include('includes/head.html') %}
-<div id="new-post-container" class="new-post-btn">
+<div class="new-post-btn">
     <div class="post-visualize">
         <button type="button" id="btn-edit" onclick="showEditView()"><i class="fas fa-edit"></i> Editar</button>
         <button type="button" id="btn-view" onclick="showPreview()"><i class="fas fa-eye"></i> Ver</button>
@@ -65,7 +65,7 @@
                         <button type="button" onclick="insertMarkdown('* ', 'Texto Aquí')" title="Lista Desordenada"><i class="fas fa-list-ul"></i></button>
                     </div>
                     <div class="post-element">
-                        <button type="button" onclick="insertMarkdown('# ', 'Texto Aquí')" title="Subtitulo"><i class="fas fa-heading"></i></button>
+                        <button type="button" onclick="insertMarkdown('## ', 'Texto Aquí')" title="Subtitulo"><i class="fas fa-heading"></i></button>
                     </div>
                     <div class="post-element">
                         <button type="button" onclick="insertMarkdown('> ', 'Texto Aquí')" title="Cita"><i class="fas fa-quote-left"></i></button>
@@ -91,21 +91,24 @@
             <div class="form-post-action">
                 <button type="submit">Publicar Post</button>
                 <button type="button" id="revert-change">Revertir Cambios</button>
+                <button type="button" class="learn-markdown-link">
+                    <a href="https://www.markdownguide.org/getting-started/" target="_blank">Aprende Markdown</a>
+                </button>
             </div>
 
         </form>
     </div>
 </div>
 
-<div id="view-post-container" style="display: none;">
-    <div class="new-post-form">
+<div id="view-post-container" class="view-post-container">
+    <div class="view-post-content">
         <div class="view-post-top"> 
             <div class="view-post-image-preview">
-                <img id="view-image" src="#" class="" style="display: none;">
+                <img id="view-image" src="#" class="view-image">
             </div>
                 
             <div class="view-post-title">
-                <h3 class="view-title" id="view-title"></h3>
+                <h1 class="view-title" id="view-title"></h1>
             </div>
 
             <!-- <div class="view-post-hashtag">
@@ -115,7 +118,9 @@
         </div>
 
         <div class="view-post-bottom">
-            <div class="view-post-content" id="content-post">
+            <!-- <div class="content-post" id="content-post"></div> -->
+            <div class="content-post">
+                <pre id="content-post"></pre>
             </div>
         </div>
     </div>

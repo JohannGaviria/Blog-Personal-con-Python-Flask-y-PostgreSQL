@@ -140,6 +140,9 @@ document.getElementById("btn-view").addEventListener("click", function () {
     const imageInput = document.getElementById('image-input');
     const viewImage = document.getElementById('view-image');
     const titlePost = document.getElementById('title').value;
+    const contentPost = document.getElementById('content').value;
+    var converter = new showdown.Converter();
+    var md = contentPost;
     
     if (imageInput.files && imageInput.files[0]) {
         const reader = new FileReader();
@@ -151,16 +154,12 @@ document.getElementById("btn-view").addEventListener("click", function () {
         
         reader.readAsDataURL(imageInput.files[0]);
     }
-    
-    document.getElementById('view-title').innerText = titlePost;
-    
-    const contentPost = document.getElementById('content').value;
-    var converter = new showdown.Converter();
-    var md = contentPost;
+
+    md = md.replace(/^ /gm, '&nbsp;');
     var html = converter.makeHtml(md);
     
+    document.getElementById('view-title').innerText = titlePost;
     document.getElementById('content-post').innerHTML = html;
-
 });
 
 //-------------------------------------------------------------------------------------------------------------------
