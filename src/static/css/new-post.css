@@ -299,10 +299,6 @@
     color: var(--color-border-hover-light);
 }
 
-#content-post p {
-    /* color: var(--color-text-light); */
-}
-
 .cancellation-warning-modal {
     display: none;
     position: fixed;
