@@ -36,3 +36,45 @@ class NewPost(Posts):
         
         finally:
             cursor.close()
+
+
+class GetPosts:
+    def __init__(self, connection, cursor):
+        self.connection = connection
+        self.cursor = cursor
+    
+    def get_posts(self):
+        try:
+            select_query = "SELECT * FROM posts;"
+            self.cursor.execute(select_query)
+
+            data_posts = self.cursor.fetchall()
+
+            return data_posts
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+            
+        finally:
+            self.cursor.close()
+            self.connection.close()
+    
+    def get_post_by_id(self, id_post):
+        try:
+            select_query = "SELECT * FROM posts WHERE id_post = %s"
+            data = (id_post,)
+
+            self.cursor.execute(select_query, data)
+
+            post = self.cursor.fetchone()
+
+            return post
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            self.cursor.close()
+            self.connection.close()

@@ -5,7 +5,7 @@ from src.database.connection import connectionDB
 from src.utils.Logger import Logger
 from src.auth.PostValidation import PostValidation
 from decouple import config
-import datetime
+from datetime import datetime
 import uuid
 import traceback
 
@@ -22,7 +22,7 @@ def new_post():
             cover_image = request.files['image']
             title = request.form['title']
             content = request.form['content']
-            publication_date = datetime.date.today().strftime("%d/%m/%Y")
+            publication_date = datetime.now().strftime('%d %b %Y')
             text = f"{title}\n{content}"
             reading_time = ReadingTime(text)
             reading_time = reading_time.calculate_reading_time()

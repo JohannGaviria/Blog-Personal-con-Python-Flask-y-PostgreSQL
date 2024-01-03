@@ -1,0 +1,11 @@
+{% include "includes/header.html" %}
+
+<main>
+        
+    <img src="{{ url_for('static', filename='assets/uploads/posts/' + post[2]) }}" alt="{{ post[3] }}" height="300px" width="300px">
+    <h1>{{ post[3] }}</h1>
+    <pre id="contents">{{ markdown_converted | safe }}</pre>
+    
+</main>
+
+{% include "includes/footer.html" %}

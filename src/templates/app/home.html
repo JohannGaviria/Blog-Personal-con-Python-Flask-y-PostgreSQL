@@ -38,10 +38,12 @@
                 <a href="#" class="close-icon" id="close-icon"><i class="fas fa-times"></i></a>
             </div>
 
+            {% for post in get_posts %}
+
             <div class="post-cards-container">
-                <a href="#">
+                <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}">
                     <div class="post-image">
-                        <img src="../../static/assets/img/background.webp" alt="imagen de la publicacion">
+                        <img src="{{ url_for('static', filename='assets/uploads/posts/' + post[2]) }}" alt="{{ post[3] }}">
                     </div>
                 </a>
                 <div class="post-card">
@@ -50,7 +52,7 @@
                             <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
                             <div class="info-text">
                                 <p id="button-author-name" class="author-name">Conor McGregor</p>
-                                <p>4 nov 2023</p>
+                                <p>{{ post[5] }}</p>
                             </div>
 
                             <div id="author-details-hidden" class="author-details-hidden">
@@ -83,7 +85,7 @@
                             </div>
                         </div>
                         <div class="post-title">
-                            <a href="#"><h3>Como se un buen peleador en tres sencillos pasos, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum, at. Lorem ipsum dolor sit amet. lorem Lorem, ipsum.</h3></a>
+                            <a href="#"><h3>{{ post[3] }}</h3></a>
                         </div>
                         <!-- <div class="post-hashtag">
                             <a href="#">#UFC</a>
@@ -98,13 +100,15 @@
                                 <a href="#"><i class="far fa-bookmark"></i> Favorito</a>
                             </div>
                             <div class="time-read">
-                                <p><i class="fas fa-book"></i> 2 min</p>
+                                <p><i class="fas fa-book"></i> {{ post[6] }}</p>
                             </div>
                         </div>
                     </div>
                 
                 </div>
             </div>
+
+            {% endfor %}
 
         </div>
 
