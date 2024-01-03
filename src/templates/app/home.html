@@ -4,6 +4,7 @@
 
     <div class="contenedor">
         <div class="left-column">
+            {% if not 'id_user' in session %}
             <div class="content-call-action">
                 <div class="community-description">
                     <p><span>BPPFP</span> te da la bienvenida a su comunidad de más de <span>1,098,890</span> personas</p>
@@ -14,6 +15,7 @@
                     <a href="{{ url_for('login_blueprint.login') }}">Iniciar Sesión</a>
                 </div>
             </div>
+            {% endif %}
 
             <div class="create-post">
                 <div class="button-create">

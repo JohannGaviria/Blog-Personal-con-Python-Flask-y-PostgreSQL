@@ -3,17 +3,17 @@ from src.auth.UploadHandle import UploadHandler
 
 
 class Posts:
-    def __init__(self, id_post, id_user, cover_image, title, content):
-        self.id_post = id_post
-        self.id_user = id_user
+    def __init__(self, cover_image, title, content):
         self.cover_image = cover_image
         self.title = title
         self.content = content
 
 
 class NewPost(Posts):
-    def __init__(self, id_post, id_user, cover_image, title, content, publication_date, reading_time):
-        super().__init__(id_post, id_user, cover_image, title, content)
+    def __init__(self, cover_image, title, content, id_post, id_user, publication_date, reading_time):
+        super().__init__(cover_image, title, content)
+        self.id_post = id_post
+        self.id_user = id_user
         self.publication_date = publication_date
         self.reading_time = reading_time
     

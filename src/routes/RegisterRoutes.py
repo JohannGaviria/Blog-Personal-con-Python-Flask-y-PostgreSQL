@@ -27,7 +27,6 @@ def register():
         if not credential_validation.has_errors():
             try:
                 connection = connectionDB()
-                cursor = connection.cursor()
 
                 register_user = RegisterUser(name, username, photo, email, password, registration_date, bio="Ingrese su biografia...", role="user", status="inactive", last_login=None)
                 register_user.register_to_db(connection, config('UPLOAD_FOLDER_USER'))
@@ -39,7 +38,6 @@ def register():
                 Logger.add_to_log("error", traceback.format_exc())
 
             finally:
-                cursor.close()
                 connection.close()
         else:
             for error in credential_validation.get_errors():

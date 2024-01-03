@@ -1,8 +1,9 @@
-from flask import Blueprint, render_template, request, session, redirect, url_for
+from flask import Blueprint, render_template, request, session, redirect, url_for, flash
 from src.auth.ReadingTime import ReadingTime
 from src.models.PostModel import NewPost
 from src.database.connection import connectionDB
 from src.utils.Logger import Logger
+from src.auth.PostValidation import PostValidation
 from decouple import config
 import datetime
 import uuid
@@ -27,18 +28,27 @@ def new_post():
             reading_time = reading_time.calculate_reading_time()
             reading_time = f"{reading_time:.0f} min"
 
-            try:
-                connection = connectionDB()
+            post_validation = PostValidation(cover_image, title,content)
+            post_validation.validation_data()
+            
+            if not post_validation.has_errors():
+                try:
+                    connection = connectionDB()
 
-                new_post = NewPost(id_post, id_user, cover_image, title, content, publication_date, reading_time)
-                new_post.upload_post(connection, config('UPLOAD_FOLDER_POST'))
-            
-            except Exception as ex:
-                Logger.add_to_log("error", str(ex))
-                Logger.add_to_log("error", traceback.format_exc())
-            
-            finally:
-                connection.close()
+                    new_post = NewPost(cover_image, title, content, id_post, id_user, publication_date, reading_time)
+                    new_post.upload_post(connection, config('UPLOAD_FOLDER_POST'))
+                    flash('Publicacion subida exitosamente.', 'success')
+                    return redirect(url_for('home_blueprint.home'))
+                
+                except Exception as ex:
+                    Logger.add_to_log("error", str(ex))
+                    Logger.add_to_log("error", traceback.format_exc())
+                
+                finally:
+                    connection.close()
+            else:
+                for error in post_validation.get_errors():
+                    flash(error['message'], error['category'])
 
         return render_template('app/new-post.html', name_page="Nuevo Post")
     return redirect(url_for('login_blueprint.login'))
