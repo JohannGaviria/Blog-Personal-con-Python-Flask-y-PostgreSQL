@@ -427,8 +427,6 @@
 
 .author-detail-description p,
 .author-email p:first-child,
-.author-work p:first-child,
-.author-education p:first-child,
 .author-joined p:first-child {
     color: var(--color-text-light);
     width: 100%;
@@ -437,8 +435,6 @@
 }
 
 .author-email p:nth-child(2),
-.author-work p:nth-child(2),
-.author-education p:nth-child(2),
 .author-joined p:nth-child(2) {
     color: var(--color-border-hover-light);
     margin-bottom: 5px;

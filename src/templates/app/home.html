@@ -32,60 +32,56 @@
         <div class="center-content">
             <div class="filter-container">
                 <div class="filter-buttons">
-                    <a href="#" class="filter-button" id="filter-recent"><i class="fas fa-clock"></i> Reciente</a>
-                    <a href="#" class="filter-button" id="filter-relevant"><i class="fas fa-star"></i> Relevante</a>
+                    <a href="{{ url_for('recentPosts_blueprint.recent_posts') }}" class="filter-button {% if name_page == 'Posts Recientes' %} select-filter {% endif %}" id="filter-recent"><i class="fas fa-clock"></i> Reciente</a>
+                    <a href="{{ url_for('relevantPosts_blueprint.relevant_posts') }}" class="filter-button {% if name_page == 'Posts Relevantes' %} select-filter {% endif %}" id="filter-relevant"><i class="fas fa-star"></i> Relevante</a>
                 </div>
-                <a href="#" class="close-icon" id="close-icon"><i class="fas fa-times"></i></a>
+                {% if name_page == 'Posts Recientes' or name_page == 'Posts Relevantes' %}
+                <a href="{{ url_for('home_blueprint.home') }}" class="close-icon" id="close-icon" style="display: block;"><i class="fas fa-times"></i></a>
+                {% endif %}
             </div>
 
             {% for post in get_posts %}
 
             <div class="post-cards-container">
                 <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}">
+                    {% if post[2] %}
                     <div class="post-image">
                         <img src="{{ url_for('static', filename='assets/uploads/posts/' + post[2]) }}" alt="{{ post[3] }}">
                     </div>
+                    {% endif %}
                 </a>
                 <div class="post-card">
                     <div class="post-content-container">
                         <div class="post-info">
-                            <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                            <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="foto de perfil">
                             <div class="info-text">
-                                <p id="button-author-name" class="author-name">Conor McGregor</p>
+                                <p id="button-author-name" class="author-name">{{ post[9] }}</p>
                                 <p>{{ post[5] }}</p>
                             </div>
 
                             <div id="author-details-hidden" class="author-details-hidden">
                                 <div class="author-detail-person">
-                                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
-                                    <a href="#" class="author-name">Conor McGregor</a>
+                                    <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="foto de perfil">
+                                    <a href="#" class="author-name">{{ post[8] }}</a>
                                 </div>
                                 <div class="author-detail-follow">
                                     <button>Seguir</button>
                                 </div>
                                 <div class="author-detail-description">
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In quod id, numquam accusamus quasi, explicabo maiores ipsam ipsa quae delectus aliquid.</p>
+                                    <p>{{ post[13] }}</p>
                                 </div>
                                 <div class="author-email">
                                     <p>EMAIL</p>
-                                    <p>conor@mc.com</p>
-                                </div>
-                                <div class="author-work">
-                                    <p>TRABAJO</p>
-                                    <p>peleador</p>
-                                </div>
-                                <div class="author-education">
-                                    <p>EDUCACION</p>
-                                    <P>universidad nacional de peleadores ufc</P>
+                                    <p>{{ post[11] }}</p>
                                 </div>
                                 <div class="author-joined">
                                     <p>UNIDO</p>
-                                    <p>13 febrero 2023</p>
+                                    <p>{{ post[12] }}</p>
                                 </div>
                             </div>
                         </div>
                         <div class="post-title">
-                            <a href="#"><h3>{{ post[3] }}</h3></a>
+                            <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}"><h3>{{ post[3] }}</h3></a>
                         </div>
                         <!-- <div class="post-hashtag">
                             <a href="#">#UFC</a>

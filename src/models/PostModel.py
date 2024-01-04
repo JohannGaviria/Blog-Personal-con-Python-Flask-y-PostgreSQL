@@ -45,7 +45,12 @@ class GetPosts:
     
     def get_posts(self):
         try:
-            select_query = "SELECT * FROM posts;"
+            select_query = """
+                SELECT posts.*, users.id_user, users.name, users.username, users.photo, users.email, users.registration_date, users.bio
+                FROM posts
+                JOIN users ON posts.id_user = users.id_user
+                ORDER BY posts.publication_date DESC, RANDOM();
+            """
             self.cursor.execute(select_query)
 
             data_posts = self.cursor.fetchall()
@@ -78,3 +83,26 @@ class GetPosts:
         finally:
             self.cursor.close()
             self.connection.close()
+    
+    def get_recent_posts(self):
+        try:
+            select_query = """
+                SELECT posts.*, users.id_user, users.name, users.username, users.photo, users.email, users.registration_date, users.bio
+                FROM posts
+                JOIN users ON posts.id_user = users.id_user
+                ORDER BY posts.publication_date DESC;
+            """
+            self.cursor.execute(select_query)
+
+            data_posts = self.cursor.fetchall()
+
+            return data_posts
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            self.cursor.close()
+            self.connection.close()
+
