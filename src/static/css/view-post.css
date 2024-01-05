@@ -1,0 +1,111 @@
+@import "root.css";
+
+.view-post,
+.comments-box {
+    width: 65%;
+    margin: auto;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 5;
+}
+
+.info-user {
+    margin-top: 10px;
+    margin-left: 5%;
+    margin-bottom: 5px;
+}
+
+.post-title {
+    margin: 0 10px;
+    text-align: center;
+}
+
+.post-content {
+    width: 85%;
+    margin: auto;
+    margin-top: 10px;
+    word-wrap: break-word;
+    padding: 10px;
+}
+
+.post-content pre {
+    white-space: pre-wrap;
+}
+
+#contents ul {
+    margin-left: 20px;
+    color: var(--color-text-secundary-light);
+}
+
+#contents h1,h2,h3,h4,h5,h6,p {
+    color: var(--color-border-hover-light);
+}
+
+.comments-post {
+    width: 85%;
+    margin: auto;
+}
+
+.add-comment,
+.comment {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.photo-user {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;            
+    margin-right: 10px;
+}
+
+.photo-user img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 100%;
+}
+
+.comment-box {
+    width: 100%;
+    height: 180px;
+    border: 2px solid #000;
+}
+
+.comment-box form {
+    width: 100%;
+    height: 130px;
+    margin: 0;
+    padding: 0;
+}
+
+.comment-box textarea {
+    resize: none;
+    width: 100%;
+    height: 100%;
+    font-size: 24px;
+    border: none;
+}
+
+.comment-box textarea:focus {
+    border: none;
+    outline: none;
+}
+
+.comment-box button {
+    float: right;
+    margin-right: 10px;
+}
+
+.comment .comment-box {
+    height: auto;        
+}
+
+.comment .comment-box p:first-child,
+.comment .comment-box p:nth-last-child(1) {
+    padding: 10px;
+    margin-left: 10px;
+}

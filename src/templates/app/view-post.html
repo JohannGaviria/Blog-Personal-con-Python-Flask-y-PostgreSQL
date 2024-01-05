@@ -1,10 +1,62 @@
 {% include "includes/header.html" %}
 
 <main>
-        
-    <img src="{{ url_for('static', filename='assets/uploads/posts/' + post[2]) }}" alt="{{ post[3] }}" height="300px" width="300px">
-    <h1>{{ post[3] }}</h1>
-    <pre id="contents">{{ markdown_converted | safe }}</pre>
+    
+    
+    <div class="view-post-container">
+        <div class="view-post">
+            {% if post[2] %}
+            <div class="post-image">
+                <img src="{{ url_for('static', filename='assets/uploads/posts/' + post[2]) }}" alt="{{ post[3] }}">
+            </div>
+            {% endif %}
+            <div class="post-info info-user">
+                <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
+                <div class="info-text">
+                    <p id="button-author-name" class="author-name">asdas asdasd</p>
+                    <p>12 hun 0121</p>
+                </div>
+            </div>
+            <div class="post-title">
+                <h1>{{ post[3] }}</h1>
+            </div>
+            <div class="post-content">
+                <pre id="contents">{{ markdown_converted | safe }}</pre>
+            </div>
+        </div>
+
+        <div class="comments-box">
+            <div class="comments-post">
+                <h2>Comentarios (23)</h2>
+                
+                <div class="add-comment">
+                    <div class="photo-user">
+                        <img src="{{ url_for('static', filename='assets/uploads/users/' + session['photo']) }}" alt="{{ session['username'] }}">
+                    </div>
+                    <div class="comment-box">
+                        <form action="" method="POST">
+                            <textarea class="comment-textarea" placeholder="Añadir comentario"></textarea>
+                            <button type="submit">Comentar</button>
+                        </form>
+                    </div>
+                </div>
+
+                <hr>
+                
+                {% for n in range(5) %}
+                <div class="comment">
+                    <div class="photo-user">
+                        <img src="../../static/assets/uploads/users/1722475810.jpg" alt="">
+                    </div>
+                    <div class="comment-box">
+                        <p>conorMC • 4 mouth</p>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat laboriosam fugit porro magnam laudantium, architecto error? Quaerat iusto, quam tempore est ipsa repudiandae praesentium. Nesciunt perferendis architecto cum maxime itaque.</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     
 </main>
 
