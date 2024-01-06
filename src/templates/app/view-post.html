@@ -2,7 +2,6 @@
 
 <main>
     
-    
     <div class="view-post-container">
         <div class="view-post">
             {% if post[2] %}
@@ -25,9 +24,11 @@
             </div>
         </div>
 
-        <div class="comments-box">
+        <div id="comments-box" class="comments-box">
             <div class="comments-post">
                 <h2>Comentarios (23)</h2>
+
+                {% if 'id_user' in session  %}
                 
                 <div class="add-comment">
                     <div class="photo-user">
@@ -35,11 +36,15 @@
                     </div>
                     <div class="comment-box">
                         <form action="" method="POST">
-                            <textarea class="comment-textarea" placeholder="Añadir comentario"></textarea>
-                            <button type="submit">Comentar</button>
+                            <textarea id="comment-textarea" class="comment-textarea" placeholder="Añadir comentario"></textarea>
+                            <button id="button-comment" type="submit">Comentar</button>
                         </form>
                     </div>
                 </div>
+
+                {% else %}
+                    <p class="login-comment"><a href="{{ url_for('login_blueprint.login') }}">Inicia sesion</a> para hacer un comentario</p>
+                {% endif %}
 
                 <hr>
                 

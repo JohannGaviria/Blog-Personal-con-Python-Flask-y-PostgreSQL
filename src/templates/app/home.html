@@ -90,7 +90,7 @@
                         </div> -->
                         <div class="post-reaction">
                             <div class="comments">
-                                <a href="#"><i class="far fa-comment"></i> Comentarios</a>
+                                <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}#comments-box"><i class="far fa-comment"></i> Comentarios</a>
                             </div>
                             <div class="favorite">
                                 <a href="#"><i class="far fa-bookmark"></i> Favorito</a>
