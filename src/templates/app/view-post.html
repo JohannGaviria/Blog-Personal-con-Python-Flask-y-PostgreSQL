@@ -35,8 +35,8 @@
                         <img src="{{ url_for('static', filename='assets/uploads/users/' + session['photo']) }}" alt="{{ session['username'] }}">
                     </div>
                     <div class="comment-box">
-                        <form action="" method="POST">
-                            <textarea id="comment-textarea" class="comment-textarea" placeholder="Añadir comentario"></textarea>
+                        <form action="{{ url_for('newComment_blueprint.new_comment', id_post=post[0]) }}" method="POST">
+                            <textarea id="comment-textarea" name="comment" class="comment-textarea" placeholder="Añadir comentario"></textarea>
                             <button id="button-comment" type="submit">Comentar</button>
                         </form>
                     </div>
@@ -48,14 +48,14 @@
 
                 <hr>
                 
-                {% for n in range(5) %}
+                {% for comment in comments %}
                 <div class="comment">
                     <div class="photo-user">
-                        <img src="../../static/assets/uploads/users/1722475810.jpg" alt="">
+                        <img src="{{ url_for('static', filename='assets/uploads/users/' + comment[6]) }}" alt="{{ comment[5] }}">
                     </div>
                     <div class="comment-box">
-                        <p>conorMC • 4 mouth</p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quaerat laboriosam fugit porro magnam laudantium, architecto error? Quaerat iusto, quam tempore est ipsa repudiandae praesentium. Nesciunt perferendis architecto cum maxime itaque.</p>
+                        <p>{{ comment[5] }} • {{ comment[4] }}</p>
+                        <p>{{ comment[3] }}</p>
                     </div>
                 </div>
                 {% endfor %}
