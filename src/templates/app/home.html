@@ -53,7 +53,7 @@
                 <div class="post-card">
                     <div class="post-content-container">
                         <div class="post-info">
-                            <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="foto de perfil">
+                            <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="{{ post[9] }}">
                             <div class="info-text">
                                 <p id="button-author-name" class="author-name">{{ post[9] }}</p>
                                 <p>{{ post[5] }}</p>
@@ -61,7 +61,7 @@
 
                             <div id="author-details-hidden" class="author-details-hidden">
                                 <div class="author-detail-person">
-                                    <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="foto de perfil">
+                                    <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="{{ post[8] }}">
                                     <a href="#" class="author-name">{{ post[8] }}</a>
                                 </div>
                                 <div class="author-detail-follow">

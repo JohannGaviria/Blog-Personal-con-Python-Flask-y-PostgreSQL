@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from src.database.connection import connectionDB
 from src.utils.Logger import Logger
+from src.models.PostModel import GetPosts
 import traceback
 
 
@@ -13,6 +14,9 @@ def relevant_posts():
         connection = connectionDB()
         cursor = connection.cursor()
 
+        get_posts = GetPosts(connection, cursor)
+        get_posts = get_posts.get_relevant_posts()
+
     except Exception as ex:
         Logger.add_to_log("error", str(ex))
         Logger.add_to_log("error", traceback.format_exc())
@@ -20,4 +24,5 @@ def relevant_posts():
     finally:
         cursor.close()
         connection.close()
-    return render_template('app/home.html', name_page='Posts Relevantes')
+    
+    return render_template('app/home.html', get_posts=get_posts, name_page='Posts Relevantes')

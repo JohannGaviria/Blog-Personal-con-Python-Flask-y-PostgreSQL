@@ -105,4 +105,28 @@ class GetPosts:
         finally:
             self.cursor.close()
             self.connection.close()
+    
+    def get_relevant_posts(self):
+        try:
+            select_query = """
+                SELECT posts.*, users.id_user, users.name, users.username, users.photo, users.email, users.registration_date, users.bio, 
+                COUNT(post_comments.id_comment) AS number_comments
+                FROM posts
+                JOIN users ON posts.id_user = users.id_user
+                LEFT JOIN post_comments ON posts.id_post = post_comments.id_post
+                GROUP BY posts.id_post, users.id_user,  users.name, users.username, users.photo, users.email, users.registration_date, users.bio
+                ORDER BY number_comments DESC, posts.publication_date DESC;
+            """
+            self.cursor.execute(select_query)
 
+            data_posts = self.cursor.fetchall()
+
+            return data_posts
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            self.cursor.close()
+            self.connection.close()

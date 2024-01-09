@@ -48,7 +48,7 @@ class GetComments:
                 SELECT post_comments.*, users.username, users.photo
                 FROM post_comments
                 JOIN users ON post_comments.id_user = users.id_user
-                WHERE post_comments.id_post = 'bfb9656a-b321-4dfd-83cd-64e69dc0e614';
+                WHERE post_comments.id_post = %s;
             """
             data = (id_post,)
             self.cursor.execute(select_query, data)
@@ -64,3 +64,26 @@ class GetComments:
         finally:
             self.cursor.close()
             self.connection.close()
+    
+    def get_comment_count(self, id_post):
+        try:
+            select_query = """
+                SELECT SUM(1)
+                FROM post_comments
+                WHERE id_post = %s;
+            """
+            data = (id_post,)
+            self.cursor.execute(select_query, data)
+
+            data_comment_count = self.cursor.fetchall()
+
+            return data_comment_count
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            self.cursor.close()
+            self.connection.close()
+    

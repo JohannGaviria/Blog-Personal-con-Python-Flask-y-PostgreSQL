@@ -49,9 +49,30 @@ def get_post_comments(id_post):
         cursor.close()
         connection.close()
 
+def get_comment_count(id_post):
+    try:
+        connection = connectionDB()
+        cursor = connection.cursor()
+
+        get_comment = GetComments(connection, cursor)
+        comment_count = get_comment.get_comment_count(id_post)
+
+        return comment_count[0] if comment_count else 0
+
+    except Exception as ex:
+        Logger.add_to_log("error", str(ex))
+        Logger.add_to_log("error", traceback.format_exc())
+        return 0
+
+    finally:
+        cursor.close()
+        connection.close()
+
+
 @main.route('/<string:id_post>', methods=['GET', 'POST'])
 def view_post(id_post):
     post, markdown_converted = get_post_details(id_post)
     comments = get_post_comments(id_post)
+    comment_count = get_comment_count(id_post)
 
-    return render_template('app/view-post.html', name_page="Vista Post", post=post, markdown_converted=markdown_converted, comments=comments)
+    return render_template('app/view-post.html', name_page="Vista Post", post=post, markdown_converted=markdown_converted, comments=comments, comment_count=comment_count)
