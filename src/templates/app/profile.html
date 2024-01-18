@@ -1,0 +1,63 @@
+{% include "includes/header.html" %}
+
+<main class="profile">
+
+    <div class="profile-back"></div>
+
+    <div class="profile-front">
+
+        <div class="profile-info-top">
+
+            <div class="profile-photo">
+                <img src="../../static/assets/uploads/users/1722475810.jpg" alt="">
+            </div>
+
+            <div class="profile-info">
+                <p>{{ session['username'] }}</p>
+                <p>descripcion Lorem ipsum dolor sit amet.</p>
+                <p>{{ session['registration_date'] }}</p>
+            </div>
+
+            <div class="action-button">
+                <a href="#">Editar Perfil</a>
+            </div>
+
+        </div>
+
+        <div class="profile-info-center">
+
+            <div class="info-left">
+                <p id="btn-publication"><i class="fas fa-newspaper"></i> 16 publicaciones</p>
+                <p id="btn-comment"><i class="fas fa-comment"></i> 26 comentarios</p>
+            </div>
+
+            <div class="info-right">
+
+                <div id="post-publication" class="post-publication">
+                    <div class="post-top">
+                        <img src="../../static/assets/uploads/posts/2803407191.png" alt="" width="50px" height="50px">
+                        <p>{{ session['username'] }} <br> 12 Jun 2023</p>
+                    </div>
+                    <div class="post-center">
+                        <a href="#"><h2>Como conseguir trabajo como programador para largarse de este pais de mierda</h2></a>
+                    </div>
+                    <div class="post-down">
+                        <p><i class="fas fa-book"></i> 15 min</p>
+                    </div>
+                </div>
+                    
+                <div id="post-comment" class="post-comment">
+                    <div class="post-comment-content">
+                        <a href="#"><h2>Como conseguir trabajo como programador para largarse de este pais de mierda</h2></a>
+                        <p>Pienso que la publicacion es muy salida de tono pero dice toda la verdad • <strong>12 May 2021</strong></p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</main>
+
+{% include "includes/footer.html" %}

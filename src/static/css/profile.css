@@ -1,0 +1,147 @@
+@import "root.css";
+
+.profile {
+    margin-top: 70px;
+}
+
+.profile-back {
+    background-color: var(--color-border-focus-light);
+    padding: 20px;
+    height: 20vh;
+    z-index: -1110;
+}
+
+.profile-front {
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0 10%;
+    position: relative;
+    top: -60px;
+}
+
+.profile-info-top {
+    padding: 20px;
+    border-bottom: 1px solid var(--color-border-focus-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-photo img {
+    border-radius: 100%;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.action-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.action-button a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--color-link-light);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.action-button a:hover {
+    background-color: var(--color-link-hover-light);
+}
+
+.profile-info {
+    text-align: center;
+}
+
+.profile-info p {
+    margin-bottom: 15px;
+    color: var(--color-text-light);
+}
+
+.profile-info-center {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20;
+}
+
+.info-left {
+    margin: 20px 10px 20px 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 80px;
+}
+
+.info-left p {
+    padding: 10px;
+    font-size: large;
+}
+
+.info-left p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.info-right {
+    margin: 20px 0 20px 10px;
+}
+
+.post-comment {
+    display: none;
+}
+
+.post-publication,
+.post-comment {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.post-top {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.post-top img {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-center,
+.post-comment-content {
+    padding: 10px;
+}
+
+.post-center h2 {
+    margin-left: 55px;
+}
+
+.post-center h2:hover {
+    color: var(--color-border-light);
+}
+
+.post-down {
+    padding: 10px;
+    text-align: right;
+    color: var(--color-text-secondary-light);
+}
+
+.post-comment-content h2:hover {
+    color: var(--color-border-light);
+}
+
+.post-comment-content p {
+    color: var(--color-border-focus-light);
+    margin-top: 10px;
+}

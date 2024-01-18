@@ -51,4 +51,5 @@ def new_post():
                     flash(error['message'], error['category'])
 
         return render_template('app/new-post.html', name_page="Nuevo Post")
+    session['redirect'] = request.url
     return redirect(url_for('login_blueprint.login'))
