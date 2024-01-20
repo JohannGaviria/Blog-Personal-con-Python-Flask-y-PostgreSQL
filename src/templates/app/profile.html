@@ -1,56 +1,89 @@
 {% include "includes/header.html" %}
 
 <main class="profile">
-
+    
     <div class="profile-back"></div>
-
+    
     <div class="profile-front">
+        
+        {% for info_profile in info_profile %}
+            <div class="profile-info-top">
 
-        <div class="profile-info-top">
+                <div class="profile-photo">
+                    <img src="{{ url_for('static', filename='assets/uploads/users/' + info_profile[3]) }}" alt="{{ info_profile[2] }}">
+                </div>
 
-            <div class="profile-photo">
-                <img src="../../static/assets/uploads/users/1722475810.jpg" alt="">
+                <div class="profile-info">
+                    <p>{{ info_profile[2] }}</p>
+                    <p>{{ info_profile[5] }}</p>
+                    <p>Unido el {{ info_profile[4] }}</p>
+                </div>
+
+                <div class="action-button">
+                    {% if info_profile[0] == session['id_user'] %}
+                        <a href="#">Editar Perfil</a>
+                    {% else %}
+                        <a href="#">Seguir</a>
+                    {% endif %}
+                </div>
+            
             </div>
-
-            <div class="profile-info">
-                <p>{{ session['username'] }}</p>
-                <p>descripcion Lorem ipsum dolor sit amet.</p>
-                <p>{{ session['registration_date'] }}</p>
-            </div>
-
-            <div class="action-button">
-                <a href="#">Editar Perfil</a>
-            </div>
-
-        </div>
+        {% endfor %}
 
         <div class="profile-info-center">
 
-            <div class="info-left">
-                <p id="btn-publication"><i class="fas fa-newspaper"></i> 16 publicaciones</p>
-                <p id="btn-comment"><i class="fas fa-comment"></i> 26 comentarios</p>
-            </div>
+            {% for info_quantity in info_quantity %}
+                <div class="info-left">
+                    <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[0] }} publicaciones</p>
+                    <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[1] }} comentarios</p>
+                </div>
+            {% endfor %}
 
             <div class="info-right">
 
-                <div id="post-publication" class="post-publication">
-                    <div class="post-top">
-                        <img src="../../static/assets/uploads/posts/2803407191.png" alt="" width="50px" height="50px">
-                        <p>{{ session['username'] }} <br> 12 Jun 2023</p>
-                    </div>
-                    <div class="post-center">
-                        <a href="#"><h2>Como conseguir trabajo como programador para largarse de este pais de mierda</h2></a>
-                    </div>
-                    <div class="post-down">
-                        <p><i class="fas fa-book"></i> 15 min</p>
-                    </div>
+                <div id="post-publication">
+                    {% if info_post %}
+                        {% for info_post in info_post %}
+                        <div class="post-publication">
+
+                            <div class="post-top">
+                                <img src="{{ url_for('static', filename='assets/uploads/users/' + info_post[6]) }}" alt="{{ info_post[5] }}">
+                                <p>{{ info_post[5] }} <br> {{ info_post[2] }}</p>
+                            </div>
+                            <div class="post-center">
+                                <a href="{{ url_for('viewPost_blueprint.view_post', id_post=info_post[0]) }}"><h2>{{ info_post[1] }}</h2></a>
+                            </div>
+                            <div class="post-down">
+                                <p><i class="fas fa-book"></i> {{ info_post[3] }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if info_post[4] == session['id_user']  %}
+                            <p class="txt-action">Aún no has creado ninguna publicación. <a href="{{ url_for('newPost_blueprint.new_post') }}">¡Crea una ahora!</a></p>
+                        {% else %}
+                            <p class="txt-action">El usuario <strong>{% for info_profile in info_profile %}{{ info_profile[2] }}{% endfor %}</strong> todavia no ha creado ninguna publicación.</p>
+                        {% endif %}
+                    {% endif %}
                 </div>
-                    
-                <div id="post-comment" class="post-comment">
-                    <div class="post-comment-content">
-                        <a href="#"><h2>Como conseguir trabajo como programador para largarse de este pais de mierda</h2></a>
-                        <p>Pienso que la publicacion es muy salida de tono pero dice toda la verdad • <strong>12 May 2021</strong></p>
-                    </div>
+                
+                <div id="post-comment" style="display: none;">
+                    {% if info_comment %}
+                        {% for info_comment in info_comment %}
+                            <div class="post-comment">
+                                <div class="post-comment-content">
+                                    <a href="{{ url_for('viewPost_blueprint.view_post', id_post=info_comment[1]) }}"><h2>{{ info_comment[5] }}</h2></a>
+                                    <p>{{ info_comment[3] }} • <strong>{{ info_comment[4] }}</strong></p>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if info_comment[2] == session['id_user'] %}
+                            <p class="txt-action">No has realizado ningún comentario aún. <a href="#">¡Mira publicaciones de interes!</a></p>
+                        {% else %}
+                            <p class="txt-action">El usuario <strong>{% for info_profile in info_profile %}{{ info_profile[2] }}{% endfor %}</strong> todavia no ha comentado ninguna publicación.</p>
+                        {% endif %}
+                    {% endif %}
                 </div>
 
             </div>

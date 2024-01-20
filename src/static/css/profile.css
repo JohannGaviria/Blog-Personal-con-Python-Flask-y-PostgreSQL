@@ -93,10 +93,6 @@
     margin: 20px 0 20px 10px;
 }
 
-.post-comment {
-    display: none;
-}
-
 .post-publication,
 .post-comment {
     margin-bottom: 20px;
@@ -114,6 +110,8 @@
 }
 
 .post-top img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
     margin-right: 10px;
 }
@@ -135,6 +133,15 @@
     padding: 10px;
     text-align: right;
     color: var(--color-text-secondary-light);
+}
+
+.txt-action {
+    text-align: center;
+    color: var(--color-text-light);
+}
+
+.txt-action a, strong {
+    color: var(--color-link-light);
 }
 
 .post-comment-content h2:hover {

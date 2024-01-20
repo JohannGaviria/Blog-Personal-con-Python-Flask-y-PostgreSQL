@@ -13,7 +13,7 @@ def init_app(config):
     app.register_blueprint(ProfileRoutes.main, url_prefix='/app/profile')
     app.register_blueprint(NewPostRoutes.main, url_prefix='/app/newPost')
     app.register_blueprint(ViewPostRoutes.main, url_prefix='/app/viewPost')
-    app.register_blueprint(NewCommentRoutes.main, url_prefix='/app/viewPost/')
+    app.register_blueprint(NewCommentRoutes.main, url_prefix='/app/viewPost')
     app.register_blueprint(RecentPostsRoutes.main, url_prefix='/app/recentPost')
     app.register_blueprint(RelevantPostsRoutes.main, url_prefix='/app/relevantPost')
     app.register_blueprint(RegisterRoutes.main, url_prefix='/app/auth/register')
