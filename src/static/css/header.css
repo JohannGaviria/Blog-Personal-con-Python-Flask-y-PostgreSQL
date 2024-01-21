@@ -1,6 +1,6 @@
 @import "root.css";
 
-nav{
+.nav{
     position: fixed;
     top: 0;
     left: 0;
@@ -10,7 +10,7 @@ nav{
     z-index: 100;
 }
 
-nav .nav-bar{
+.nav .nav-bar{
     position: relative;
     height: 100%;
     max-width: 1000px;
@@ -23,7 +23,7 @@ nav .nav-bar{
     justify-content: space-between;
 }
 
-nav .nav-bar .sidebarOpen{
+.nav .nav-bar .sidebarOpen{
     color: var(--color-text-light);
     font-size: 25px;
     padding: 5px;
@@ -31,7 +31,7 @@ nav .nav-bar .sidebarOpen{
     display: none;
 }
 
-nav .nav-bar .logo a{
+.nav .nav-bar .logo a{
     font-size: 25px;
     font-weight: 500;
     color: var(--color-button-text-light);
@@ -227,7 +227,7 @@ nav .nav-bar .logo a{
 }
 
 @media (max-width: 767px) {
-    nav .nav-bar .sidebarOpen{
+    .nav .nav-bar .sidebarOpen{
         display: block;
         color: var(--color-button-text-light);
     }
@@ -244,11 +244,11 @@ nav .nav-bar .logo a{
         transition: all 0.4s ease;
     }
 
-    nav.active .menu{
+    .nav.active .menu{
         left: -0%;
     }
 
-    nav.active .nav-bar .navLogo a{
+    .nav.active .nav-bar .navLogo a{
         opacity: 0;
         transition: all 0.3s ease;
     }

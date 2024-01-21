@@ -1,20 +1,21 @@
 {% include('includes/head.html') %}
 <header>
-    <nav>
+    <nav class="nav">
         <div class="nav-bar">
             <i class="fas fa-bars sidebarOpen"></i>
-            <span class="logo navLogo"><a href="#">BPPFP</a></span>
+            <span class="logo navLogo"><a href="{{ url_for('home_blueprint.home') }}">BPPFP</a></span>
 
             <div class="menu">
                 <div class="logo-toggle">
-                    <span class="logo"><a href="#">BPPFP</a></span>
+                    <span class="logo"><a href="{{ url_for('home_blueprint.home') }}">BPPFP</a></span>
                     <i class="fas fa-times cancel siderbarClose"></i>
                 </div>
 
                 <ul class="nav-links">
                     <li><a href="{{ url_for('home_blueprint.home') }}">Inicio</a></li>
                     <li><a href="{{ url_for('profile_blueprint.profile', username=session['username']) }}">Perfil</a></li>
-                    <li><a href="#">publicaciones</a></li>
+                    <li><a href="#">Panel</a></li>
+                    <li><a href="{{ url_for('editProfile_blueprint.edit_profile') }}">Configuracion</a></li>
                 </ul>
                 <div class="actions-buttons">
                     <a href="{{ url_for('register_blueprint.register') }}">Únete Ahora</a>

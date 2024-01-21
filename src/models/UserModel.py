@@ -72,6 +72,7 @@ class LoginUser:
                         'username': data_user[2],
                         'photo': data_user[3],
                         'email': data_user[4],
+                        'bio': data_user[7],
                         'role': data_user[8]
                     }
 

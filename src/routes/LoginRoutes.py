@@ -35,7 +35,9 @@ def login():
                 session['id_user'] = data_user['id_user']
                 session['name'] = data_user['name']
                 session['username'] = data_user['username']
+                session['email'] = data_user['email']
                 session['photo'] = data_user['photo']
+                session['bio'] = data_user['bio']
                 session['role'] = data_user['role']
 
                 flash(f"Bienvenido {session['username']}", 'success')

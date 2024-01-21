@@ -21,7 +21,7 @@
 
                 <div class="action-button">
                     {% if info_profile[0] == session['id_user'] %}
-                        <a href="#">Editar Perfil</a>
+                        <a href="{{ url_for('editProfile_blueprint.edit_profile') }}">Editar Perfil</a>
                     {% else %}
                         <a href="#">Seguir</a>
                     {% endif %}
@@ -34,6 +34,9 @@
 
             {% for info_quantity in info_quantity %}
                 <div class="info-left">
+                    <p><i class="fas fa-user-friends"></i> seguidores</p>
+                    <p><i class="fas fa-user-check"></i> seguidos</p>
+                    <hr>
                     <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[0] }} publicaciones</p>
                     <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[1] }} comentarios</p>
                 </div>

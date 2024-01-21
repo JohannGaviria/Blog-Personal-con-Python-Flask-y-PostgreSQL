@@ -1,0 +1,28 @@
+2024-01-20 18:54:40 | ERROR | 'bio'
+2024-01-20 18:54:40 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\LoginRoutes.py", line 40, in login
+    session['bio'] = data_user['bio']
+                     ~~~~~~~~~^^^^^^^
+KeyError: 'bio'
+
+2024-01-20 18:54:47 | ERROR | 'bio'
+2024-01-20 18:54:47 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\LoginRoutes.py", line 40, in login
+    session['bio'] = data_user['bio']
+                     ~~~~~~~~~^^^^^^^
+KeyError: 'bio'
+
+2024-01-20 18:55:04 | ERROR | 'bio'
+2024-01-20 18:55:04 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\LoginRoutes.py", line 40, in login
+    session['bio'] = data_user['bio']
+                     ~~~~~~~~~^^^^^^^
+KeyError: 'bio'
+
+2024-01-20 18:55:32 | ERROR | 'bio'
+2024-01-20 18:55:32 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\LoginRoutes.py", line 40, in login
+    session['bio'] = data_user['bio']
+                     ~~~~~~~~~^^^^^^^
+KeyError: 'bio'
+
