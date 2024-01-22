@@ -1,5 +1,5 @@
 from flask import Flask
-from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes
+from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes, EditAccountRoutes
 
 
 app = Flask(__name__)
@@ -13,6 +13,7 @@ def init_app(config):
 
     app.register_blueprint(ProfileRoutes.main, url_prefix='/app/profile')
     app.register_blueprint(EditProfileRoutes.main, url_prefix='/app/settings')
+    app.register_blueprint(EditAccountRoutes.main, url_prefix='/app/settings')
 
     app.register_blueprint(NewPostRoutes.main, url_prefix='/app/newPost')
     app.register_blueprint(ViewPostRoutes.main, url_prefix='/app/viewPost')

@@ -2,39 +2,31 @@
 
 <main>
     <div class="settings-container">
-        <div class="settings-nav">
-            <nav class="settings-nav">
-                <ul class="setting-nav-list">
-                    <li class="setting-element"><a href="#"><i class="fas fa-user-circle"></i> Perfil</li></a>
-                    <li class="setting-element"><a href="#"><i class="fas fa-id-card"></i> Cuenta</li></a>
-                    <li class="setting-element"><a href="{{ url_for('logout_blueprint.logout') }}"><i class="fas fa-sign-out-alt"></i> Cerra Sesión</li></a>
-                </ul>
-            </nav>
-        </div>
+        {% include "includes/settings-nav.html" %}
         <div class="settings">
             <div class="setting-profile">
                 <form action="" method="POST" enctype="multipart/form-data">
                     <div class="edit-profile">
                         <h3>Usuario</h3>
                         <div class="form-group-profile">
-                            <input type="text" name="name" id="name" class="form-input" placeholder=" " value="{{ session['name'] }}">
-                            <label for="name" class="form-label">Nombre</label>
+                            <label for="name" class="form-label-profile">Nombre</label>
+                            <input type="text" name="name" id="name" class="form-input" value="{{ session['name'] }}">
                             <!-- <i class="fas fa-envelope input-icon"></i> -->
                         </div>
                         <div class="form-group-profile">
-                            <input type="text" name="email" id="email" class="form-input" placeholder=" " value="{{ session['email'] }}">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label-profile">Email</label>
+                            <input type="text" name="email" id="email" class="form-input" value="{{ session['email'] }}">
                             <!-- <i class="fas fa-envelope input-icon"></i> -->
                         </div>
                         <div class="form-group-profile">
-                            <input type="text" name="username" id="username" class="form-input" placeholder=" " value="{{ session['username'] }}">
-                            <label for="username" class="form-label">Usuario</label>
+                            <label for="username" class="form-label-profile">Usuario</label>
+                            <input type="text" name="username" id="username" class="form-input" value="{{ session['username'] }}">
                             <!-- <i class="fas fa-envelope input-icon"></i> -->
                         </div>
                         <div class="form-group-profile">
-                            <img src="{{ url_for('static', filename='assets/uploads/users/' + session['photo']) }}" alt="{{ session['username'] }}" width="60px" height="60px">
+                            <label for="photo" class="form-label-profile">Imagen de perfil</label>
+                            <img src="{{ url_for('static', filename='assets/uploads/users/' + session['photo']) }}" alt="{{ session['username'] }}">
                             <input type="file" name="photo" id="photo">
-                            <label for="photo" class="form-label">Imagen de perfil</label>
                             <!-- <i class="fas fa-envelope input-icon"></i> -->
                         </div>
                     </div>
@@ -42,6 +34,7 @@
                     <div class="edit-profile">
                         <h3>Basico</h3>
                         <div class="form-group-profile">
+                            <label for="bio" class="form-label-profile">Biografia</label>
                             <textarea name="bio" id="bio" placeholder=" ">{{ session['bio'] }}</textarea>
                         </div>
                     </div>

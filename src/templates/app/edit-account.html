@@ -1,0 +1,45 @@
+{% include "includes/header.html" %}
+
+<main>
+    <div class="settings-container">
+        {% include "includes/settings-nav.html" %}
+        <div class="settings">
+            <div class="setting-profile">
+                <form action="" method="POST">
+                    <div class="edit-profile">
+                        <h3>Cambiar Contraseña</h3>
+                        <div class="form-group-profile">
+                            <label for="current-password" class="form-label-profile">Contraseña actual</label>
+                            <input type="password" name="current-password" id="current-password" class="form-input">
+                        </div>
+                        <div class="form-group-profile">
+                            <label for="password" class="form-label-profile">Contraseña</label>
+                            <input type="password" name="password" id="password" class="form-input">
+                        </div>
+                        <div class="form-group-profile">
+                            <label for="new-password" class="form-label-profile">Nueva Contraseña</label>
+                            <input type="password" name="new-password" id="new-password" class="form-input">
+                        </div>
+                    </div>
+
+                    <div class="edit-profile">
+                        <h3>Correo electronico de la cuenta</h3>
+                        <p>correo electronico principa <strong>{{ session['email'] }}</strong></p>
+                    </div>
+
+                    <div class="edit-profile">
+                        <div class="danger-zone">
+                            <h3>Danger Zone</h3>
+                            <p><strong>¡Atención!:</strong><br>Al proceder con la eliminación de su cuenta, toda la información asociada, incluyendo publicaciones y comentarios, será permanentemente eliminada de la comunidad.</p>
+                            <a href="#">Eliminar Cuenta</a>
+                        </div>
+                    </div>
+
+                    <button type="submit">Guarda informacion de perfil</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include "includes/footer.html" %}

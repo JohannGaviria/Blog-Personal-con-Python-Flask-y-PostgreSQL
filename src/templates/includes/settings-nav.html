@@ -1,0 +1,9 @@
+<div class="settings-nav">
+    <nav class="settings-nav">
+        <ul class="setting-nav-list">
+            <li class="setting-element {% if name_page == 'Editar Perfil' %} activate {% endif %}"><a href="{{ url_for('editProfile_blueprint.edit_profile') }}"><i class="fas fa-user-circle"></i> Perfil</li></a>
+            <li class="setting-element {% if name_page == 'Editar Cuenta' %} activate {% endif %}"><a href="{{ url_for('editAccount_blueprint.edit_account') }}"><i class="fas fa-id-card"></i> Cuenta</li></a>
+            <li class="setting-element"><a href="{{ url_for('logout_blueprint.logout') }}"><i class="fas fa-sign-out-alt"></i> Cerra Sesión</li></a>
+        </ul>
+    </nav>
+</div>
