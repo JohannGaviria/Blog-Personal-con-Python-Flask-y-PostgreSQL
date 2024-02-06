@@ -23,7 +23,7 @@
                     {% if info_profile[0] == session['id_user'] %}
                         <a href="{{ url_for('editProfile_blueprint.edit_profile') }}">Editar Perfil</a>
                     {% else %}
-                        <a href="#">Seguir</a>
+                        <a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a>
                     {% endif %}
                 </div>
             

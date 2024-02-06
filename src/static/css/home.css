@@ -411,10 +411,13 @@
     padding: 5px;
     font-size: 18px;
     background-color: var(--color-accent-light);
-    color: var(--color-background-light);
     border-radius: 5px;
     border: none;
     cursor: pointer;
+}
+
+.author-detail-follow a {
+    color: var(--color-background-light);
 }
 
 .author-detail-follow button:hover {

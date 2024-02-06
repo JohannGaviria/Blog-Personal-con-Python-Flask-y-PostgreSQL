@@ -62,10 +62,14 @@
                             <div id="author-details-hidden" class="author-details-hidden">
                                 <div class="author-detail-person">
                                     <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="{{ post[8] }}">
-                                    <a href="#" class="author-name">{{ post[8] }}</a>
+                                    <a href="{{ url_for('profile_blueprint.profile', username=post[9]) }}" class="author-name">{{ post[8] }}</a>
                                 </div>
                                 <div class="author-detail-follow">
-                                    <button>Seguir</button>
+                                    {% if post[1] == session['id_user'] %}
+                                        <button><a href="{{ url_for('profile_blueprint.profile', username = post[9]) }}">Ver Perfil</a></button>
+                                    {% else %}
+                                        <button><a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a></button>
+                                    {% endif %}
                                 </div>
                                 <div class="author-detail-description">
                                     <p>{{ post[13] }}</p>
@@ -136,7 +140,7 @@
                     <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
                     <div class="info-text">
                         <p class="author-name"><a href="#">Conor McGregor</a></p>
-                        <button><i class="fas fa-user-plus"></i> Seguir</button>
+                        <button><i class="fas fa-user-plus"></i> <a href="#"> Seguir</a></button>
                     </div>
                 </div>
                 <div class="follow-content">
