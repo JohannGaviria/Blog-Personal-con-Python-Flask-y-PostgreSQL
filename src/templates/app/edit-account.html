@@ -5,7 +5,7 @@
         {% include "includes/settings-nav.html" %}
         <div class="settings">
             <div class="setting-profile">
-                <form action="" method="POST">
+                <form action="/app/settings/account" method="POST">
                     <div class="edit-profile">
                         <h3>Cambiar Contraseña</h3>
                         <div class="form-group-profile">
@@ -31,7 +31,7 @@
                         <div class="danger-zone">
                             <h3>Danger Zone</h3>
                             <p><strong>¡Atención!:</strong><br>Al proceder con la eliminación de su cuenta, toda la información asociada, incluyendo publicaciones y comentarios, será permanentemente eliminada de la comunidad.</p>
-                            <a href="#">Eliminar Cuenta</a>
+                            <a href="{{ url_for('deleteAccount_blueprint.delete_account') }}">Eliminar Cuenta</a>
                         </div>
                     </div>
 

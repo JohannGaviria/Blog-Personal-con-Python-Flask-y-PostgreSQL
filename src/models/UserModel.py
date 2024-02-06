@@ -1,6 +1,7 @@
 from src.utils.Logger import Logger
 from src.auth.PasswordHandling import PasswordSecurity
 from src.auth.UploadHandle import UploadHandler
+from src.auth.PasswordHandling import PasswordSecurity
 import traceback
 
 
@@ -137,6 +138,52 @@ class EditUser(User):
         finally:
             cursor.close()
             connection.close()
+
+    @staticmethod
+    def edit_account_pass(connection, id_user, current_password, password):
+        try:
+            cursor = connection.cursor()
+
+            cursor.execute("SELECT password FROM users WHERE id_user = %s", (id_user,))
+            data_password = cursor.fetchone()
+
+            if data_password:
+                stored_password = data_password[0]
+                if PasswordSecurity.verify_password(stored_password, current_password):
+                    hashed_password = PasswordSecurity.hash_password(password)
+                    cursor.execute("UPDATE users SET password = %s WHERE id_user = %s", (hashed_password, id_user))
+                    connection.commit()
+            
+            return None
+        
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+        
+        finally:
+            cursor.close()
+            connection.close()
+
+    
+    @staticmethod
+    def delete_account(connection, id_user):
+        try:
+            cursor = connection.cursor()
+
+            cursor.execute("DELETE FROM posts WHERE id_user = %s", (id_user,))
+            cursor.execute("DELETE FROM post_comments WHERE id_user = %s", (id_user,))
+            cursor.execute("DELETE FROM users WHERE id_user = %s", (id_user,))
+
+            connection.commit()
+        
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            cursor.close()
+            connection.close()
+
     
     @staticmethod
     def refresh_data(connection, id_user):
