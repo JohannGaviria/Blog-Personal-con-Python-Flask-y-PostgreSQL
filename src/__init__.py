@@ -12,7 +12,7 @@ def init_app(config):
     app.register_blueprint(HomeRoutes.main, url_prefix='/app/home')
 
     app.register_blueprint(ProfileRoutes.main, url_prefix='/app/profile')
-    app.register_blueprint(EditProfileRoutes.main, url_prefix='/app/settings')
+    app.register_blueprint(EditProfileRoutes.main, url_prefix='/app/settings/profile')
     app.register_blueprint(EditAccountRoutes.main, url_prefix='/app/settings')
 
     app.register_blueprint(NewPostRoutes.main, url_prefix='/app/newPost')

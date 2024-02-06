@@ -82,3 +82,85 @@ class LoginUser:
         
         finally:
             cursor.close()
+
+
+class EditUser(User):
+    def __init__(self, name, username, photo, email, password, bio):
+        super().__init__(name, username, photo, email, password)
+        self.bio = bio
+    
+    def edit_user_info(self, connection, id_user):
+        try:
+            cursor = connection.cursor()
+
+            update_query = """
+                UPDATE users
+                SET name = %s, username = %s, email = %s, bio = %s
+                WHERE id_user = %s
+            """
+            data = (self.name, self.username, self.email, self.bio, id_user)
+
+            cursor.execute(update_query, data)
+
+            connection.commit()
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            cursor.close()
+            connection.close()
+    
+    def edit_user_photo(self, connection, upload_folder, id_user):
+        try:
+            cursor = connection.cursor()
+
+            upload_handler = UploadHandler(self.photo, upload_folder)
+            uploaded_filename = upload_handler.save_image()
+
+            update_query = """
+                UPDATE users
+                SET photo = %s
+                WHERE id_user = %s
+            """
+            data = (uploaded_filename, id_user)
+
+            cursor.execute(update_query, data)
+
+            connection.commit()
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            cursor.close()
+            connection.close()
+    
+    @staticmethod
+    def refresh_data(connection, id_user):
+        try:
+            cursor = connection.cursor()
+
+            select_query = "SELECT * FROM users WHERE id_user = %s"
+            data = (id_user,)
+
+            cursor.execute(select_query, data)
+            data_user = cursor.fetchone()
+
+            return {
+                'name': data_user[1],
+                'username': data_user[2],
+                'photo': data_user[3],
+                'email': data_user[4],
+                'bio': data_user[7]
+            }
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            cursor.close()
+            connection.close()
