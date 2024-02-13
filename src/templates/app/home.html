@@ -55,43 +55,14 @@
                         <div class="post-info">
                             <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="{{ post[9] }}">
                             <div class="info-text">
-                                <p id="button-author-name" class="author-name">{{ post[9] }}</p>
+                                <a href="{{ url_for('profile_blueprint.profile', username=post[9]) }}" class="author-name">{{ post[9] }}</a>
                                 <p>{{ post[5] }}</p>
                             </div>
 
-                            <div id="author-details-hidden" class="author-details-hidden">
-                                <div class="author-detail-person">
-                                    <img src="{{ url_for('static', filename='assets/uploads/users/' + post[10]) }}" class="avatar" alt="{{ post[8] }}">
-                                    <a href="{{ url_for('profile_blueprint.profile', username=post[9]) }}" class="author-name">{{ post[8] }}</a>
-                                </div>
-                                <div class="author-detail-follow">
-                                    {% if post[1] == session['id_user'] %}
-                                        <button><a href="{{ url_for('profile_blueprint.profile', username = post[9]) }}">Ver Perfil</a></button>
-                                    {% else %}
-                                        <button><a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a></button>
-                                    {% endif %}
-                                </div>
-                                <div class="author-detail-description">
-                                    <p>{{ post[13] }}</p>
-                                </div>
-                                <div class="author-email">
-                                    <p>EMAIL</p>
-                                    <p>{{ post[11] }}</p>
-                                </div>
-                                <div class="author-joined">
-                                    <p>UNIDO</p>
-                                    <p>{{ post[12] }}</p>
-                                </div>
-                            </div>
                         </div>
                         <div class="post-title">
                             <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}"><h3>{{ post[3] }}</h3></a>
                         </div>
-                        <!-- <div class="post-hashtag">
-                            <a href="#">#UFC</a>
-                            <a href="#">#peleador</a>
-                            <a href="#">#campeonato</a>
-                        </div> -->
                         <div class="post-reaction">
                             <div class="comments">
                                 <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}#comments-box"><i class="far fa-comment"></i> Comentarios</a>
@@ -114,43 +85,35 @@
 
         <div class="right-column">
             
-            <div class="followings-container">
-                <h3><i class="fas fa-user-check"></i> Siguiendo</h3>
-                
-                <div class="following-content">
-                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
-                    <div class="info-text">
-                        <p class="author-name"><a href="#">Conor McGregor</a></p>
-                        <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
-                    </div>
+            {% if not 'id_session' in session %}
+                <div class="followings-container">
+                    <h3><i class="fas fa-user-check"></i> Siguiendo</h3>
+                    
+                    {% for follower in get_followers %}
+                        <div class="following-content">
+                            <img src="{{ url_for('static', filename='assets/uploads/users/' + follower[2]) }}" class="avatar" alt="foto de perfil">
+                            <div class="info-text">
+                                <p class="author-name"><a href="#">{{ follower[1] }}</a></p>
+                                <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="following-content">
-                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
-                    <div class="info-text">
-                        <p class="author-name"><a href="#">Conor McGregor</a></p>
-                        <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
-                    </div>
-                </div>
-            </div>
 
-            <div class="follows-container">
-                <h3><i class="fas fa-user-plus"></i> Seguir</h3>
+                <div class="follows-container">
+                    <h3><i class="fas fa-user-plus"></i> Seguir</h3>
 
-                <div class="follow-content">
-                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
-                    <div class="info-text">
-                        <p class="author-name"><a href="#">Conor McGregor</a></p>
-                        <button><i class="fas fa-user-plus"></i> <a href="#"> Seguir</a></button>
-                    </div>
+                    {% for suggest in get_suggests %}
+                        <div class="follow-content">
+                            <img src="{{ url_for('static', filename='assets/uploads/users/' + suggest[2]) }}" class="avatar" alt="foto de perfil">
+                            <div class="info-text">
+                                <p class="author-name"><a href="#">{{ suggest[1] }}</a></p>
+                                <button><i class="fas fa-user-plus"></i> <a href="#"> Seguir</a></button>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
-                <div class="follow-content">
-                    <img src="../../static/assets/uploads/users/1722475810.jpg" class="avatar" alt="foto de perfil">
-                    <div class="info-text">
-                        <p class="author-name"><a href="#">Conor McGregor</a></p>
-                        <button><i class="fas fa-user-plus"></i> Seguir</button>
-                    </div>
-                </div>
-            </div>
+            {% endif %}
         </div>
             
     </div>

@@ -1,0 +1,181 @@
+2024-02-12 18:42:00 | ERROR | connection already closed
+2024-02-12 18:42:00 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 33, in get_followers
+    cursor = connection.cursor()
+             ^^^^^^^^^^^^^^^^^^^
+psycopg2.InterfaceError: connection already closed
+
+2024-02-12 18:42:00 | ERROR | cannot access local variable 'cursor' where it is not associated with a value
+2024-02-12 18:42:00 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 21, in home
+    get_followers = Follow.get_followers(connection, session['id_user'])
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 54, in get_followers
+    cursor.close()
+    ^^^^^^
+UnboundLocalError: cannot access local variable 'cursor' where it is not associated with a value
+
+2024-02-12 19:41:07 | ERROR | 'id_user'
+2024-02-12 19:41:07 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 36, in get_follower
+    get_followers = Follow.get_followers(connection, session['id_user'])
+                                                     ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:41:07 | ERROR | 'id_user'
+2024-02-12 19:41:07 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 54, in get_suggest_follwer
+    get_suggest_follwer = Follow.suggest_followers(connection, session['id_user'])
+                                                               ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:42:07 | ERROR | 'id_user'
+2024-02-12 19:42:07 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 36, in get_follower
+    get_followers = Follow.get_followers(connection, session['id_user'])
+                                                     ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:42:07 | ERROR | 'id_user'
+2024-02-12 19:42:07 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 54, in get_suggest_follwer
+    get_suggest_follwer = Follow.suggest_followers(connection, session['id_user'])
+                                                               ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:47:49 | ERROR | 'id_user'
+2024-02-12 19:47:49 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 36, in get_follower
+    get_followers = Follow.get_followers(connection, session['id_user'])
+                                                     ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:47:50 | ERROR | 'id_user'
+2024-02-12 19:47:50 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 54, in get_suggest_follwer
+    get_suggest_follwer = Follow.suggest_followers(connection, session['id_user'])
+                                                               ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:49:19 | ERROR | 'id_user'
+2024-02-12 19:49:19 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 36, in get_follower
+    get_followers = Follow.get_followers(connection, session['id_user'])
+                                                     ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 19:49:19 | ERROR | 'id_user'
+2024-02-12 19:49:19 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\routes\HomeRoutes.py", line 54, in get_suggest_follwer
+    get_suggest_follwer = Follow.suggest_followers(connection, session['id_user'])
+                                                               ~~~~~~~^^^^^^^^^^^
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\venv\Lib\site-packages\flask\sessions.py", line 79, in __getitem__
+    return super().__getitem__(key)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'id_user'
+
+2024-02-12 20:02:05 | ERROR | tuple index out of range
+2024-02-12 20:02:05 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:02:34 | ERROR | tuple index out of range
+2024-02-12 20:02:34 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:04:24 | ERROR | tuple index out of range
+2024-02-12 20:04:24 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:04:42 | ERROR | tuple index out of range
+2024-02-12 20:04:42 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:05:14 | ERROR | tuple index out of range
+2024-02-12 20:05:14 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:14:41 | ERROR | tuple index out of range
+2024-02-12 20:14:41 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:15:34 | ERROR | tuple index out of range
+2024-02-12 20:15:34 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:16:41 | ERROR | tuple index out of range
+2024-02-12 20:16:41 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:16:45 | ERROR | tuple index out of range
+2024-02-12 20:16:45 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:20:05 | ERROR | tuple index out of range
+2024-02-12 20:20:05 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:20:35 | ERROR | tuple index out of range
+2024-02-12 20:20:35 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:20:35 | ERROR | tuple index out of range
+2024-02-12 20:20:35 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:21:31 | ERROR | tuple index out of range
+2024-02-12 20:21:31 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+
+2024-02-12 20:22:45 | ERROR | tuple index out of range
+2024-02-12 20:22:45 | ERROR | Traceback (most recent call last):
+  File "C:\Users\bloos\OneDrive\Documentos\Programacion\Proyectos\BPPFP\src\models\FollowModel.py", line 87, in suggest_followers
+    cursor.execute(select_query, data)
+IndexError: tuple index out of range
+

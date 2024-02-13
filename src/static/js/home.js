@@ -36,14 +36,3 @@ window.addEventListener('scroll', () => {
         buttonFixed.style.display = 'none';
     }
 });
-
-//-------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------
-//-------------------------------------------------------------------------------------------------------------------
-
-var elemento = document.getElementById('author-details-hidden');
-var boton = document.getElementById('button-author-name');
-
-boton.addEventListener('click', function () {
-    elemento.style.display = 'block';
-});
