@@ -67,7 +67,12 @@ class GetPosts:
     
     def get_post_by_id(self, id_post):
         try:
-            select_query = "SELECT * FROM posts WHERE id_post = %s"
+            select_query = """
+                SELECT users.id_user, users.username, users.photo, posts.*
+                FROM posts
+                JOIN users ON users.id_user = posts.id_user
+                WHERE posts.id_post = %s
+            """
             data = (id_post,)
 
             self.cursor.execute(select_query, data)

@@ -16,7 +16,7 @@ def get_post_details(id_post):
         get_posts = GetPosts(connection, cursor)
         post = get_posts.get_post_by_id(id_post)
 
-        markdown_convert = MarkdownConvert(post[4])
+        markdown_convert = MarkdownConvert(post[7])
         markdown_converted = markdown_convert.convert()
 
         return post, markdown_converted
