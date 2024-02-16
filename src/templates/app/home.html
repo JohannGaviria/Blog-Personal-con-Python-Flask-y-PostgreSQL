@@ -94,7 +94,7 @@
                             <img src="{{ url_for('static', filename='assets/uploads/users/' + follower[2]) }}" class="avatar" alt="foto de perfil">
                             <div class="info-text">
                                 <p class="author-name"><a href="{{ url_for('profile_blueprint.profile', username=follower[1]) }}">{{ follower[1] }}</a></p>
-                                <button><i class="fas fa-user-times"></i> <a href="#">Dejar de Seguir</a></button>
+                                <button><i class="fas fa-user-times"></i> <a href="{{ url_for('leaveFollow_blueprint.leave_follow', id_following=follower[0]) }}">Dejar de Seguir</a></button>
                             </div>
                         </div>
                     {% endfor %}

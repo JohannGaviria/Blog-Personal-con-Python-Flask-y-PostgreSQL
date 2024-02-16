@@ -30,6 +30,31 @@ class Follow:
             cursor.close()
             connection.close()
     
+    def get_follower_following(connection, id_user):
+        try:
+            cursor = connection.cursor()
+
+            select_query = """
+                SELECT
+                    (SELECT COUNT(*) FROM followers WHERE id_following = %s),
+                    (SELECT COUNT(*) FROM followers WHERE id_follower = %s)
+            """
+            data = (id_user, id_user)
+
+            cursor.execute(select_query, data)
+
+            info_follwer_following = cursor.fetchall()
+
+            return info_follwer_following
+        
+        except Exception as ex:
+            Logger.add_to_log('error', str(ex))
+            Logger.add_to_log('errot', traceback.format_exc())
+        
+        finally:
+            cursor.close()
+            connection.close()
+
     @staticmethod
     def get_followers(connection, id_user):
         try:
@@ -101,31 +126,6 @@ class Follow:
             cursor.close()
             connection.close()
     
-    def get_follower_following(connection, id_user):
-        try:
-            cursor = connection.cursor()
-
-            select_query = """
-                SELECT
-                    (SELECT COUNT(*) FROM followers WHERE id_following = %s),
-                    (SELECT COUNT(*) FROM followers WHERE id_follower = %s)
-            """
-            data = (id_user, id_user)
-
-            cursor.execute(select_query, data)
-
-            info_follwer_following = cursor.fetchall()
-
-            return info_follwer_following
-        
-        except Exception as ex:
-            Logger.add_to_log('error', str(ex))
-            Logger.add_to_log('errot', traceback.format_exc())
-        
-        finally:
-            cursor.close()
-            connection.close()
-    
     @staticmethod
     def check_verefy_following(connection, id_follower, id_following):
         try:
@@ -145,6 +145,26 @@ class Follow:
         except Exception as ex:
             Logger.add_to_log("error", str(ex))
             Logger.add_to_log("error", traceback.format_exc())
+        
+        finally:
+            cursor.close()
+            connection.close()
+    
+    @staticmethod
+    def leave_follower(connection, id_follower, id_following):
+        try:
+            cursor = connection.cursor()
+
+            delete_query = "DELETE FROM followers WHERE id_follower = %s AND id_following = %s"
+            data = (id_follower, id_following)
+
+            cursor.execute(delete_query, data)
+
+            connection.commit()
+        
+        except Exception as ex:
+            Logger.add_to_log('error', str(ex))
+            Logger.add_to_log('error', traceback.format_exc())
         
         finally:
             cursor.close()

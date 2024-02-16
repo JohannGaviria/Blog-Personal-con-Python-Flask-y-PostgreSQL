@@ -24,7 +24,7 @@
                         <a href="{{ url_for('editProfile_blueprint.edit_profile') }}">Editar Perfil</a>
                     {% else %}
                         {% if check_following %}
-                            <a href="#">Dejar de Seguir</a>
+                            <a href="{{ url_for('leaveFollow_blueprint.leave_follow', id_following=info_profile[0]) }}">Dejar de Seguir</a>
                         {% else %}
                             <a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a>
                         {% endif %}
