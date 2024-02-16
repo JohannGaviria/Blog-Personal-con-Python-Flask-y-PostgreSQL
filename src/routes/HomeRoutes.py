@@ -69,4 +69,7 @@ def home():
     get_followers = get_follower()
     get_suggests = get_suggest_follwer()
 
+    print(f"####################\n{get_suggests}\n###################")
+
+
     return render_template('app/home.html', get_posts=get_posts, get_followers=get_followers, get_suggests=get_suggests, name_page="Inicio")

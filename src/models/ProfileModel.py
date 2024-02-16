@@ -83,12 +83,28 @@ class Profile:
     def get_info_quantity(self, id_user):
         try:
             select_query = """
-                SELECT COUNT(DISTINCT posts.id_post), COUNT(DISTINCT post_comments.id_comment)
-                FROM posts
-                LEFT JOIN post_comments ON post_comments.id_post = posts.id_post
-                WHERE posts.id_user = %s;
+                SELECT
+                    followers_totals.total_followers,
+                    followers_totals.total_following,
+                    posts_totals.total_posts,
+                    posts_totals.total_comments
+                FROM
+                    (SELECT
+                        (SELECT COUNT(*) FROM public.followers WHERE id_following = %s) AS total_followers,
+                        (SELECT COUNT(*) FROM public.followers WHERE id_follower = %s) AS total_following
+                    ) AS followers_totals,
+                    (SELECT
+                        COUNT(DISTINCT posts.id_post) AS total_posts,
+                        COUNT(DISTINCT post_comments.id_comment) AS total_comments
+                    FROM
+                        posts
+                        LEFT JOIN post_comments ON post_comments.id_post = posts.id_post
+                    WHERE
+                        posts.id_user = %s
+                    ) AS posts_totals;
+
             """
-            data = (id_user,)
+            data = (id_user, id_user, id_user)
 
             self.cursor.execute(select_query, data)
 

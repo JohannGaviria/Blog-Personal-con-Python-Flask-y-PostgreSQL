@@ -85,7 +85,7 @@
 
         <div class="right-column">
             
-            {% if not 'id_session' in session %}
+            {% if 'id_user' in session %}
                 <div class="followings-container">
                     <h3><i class="fas fa-user-check"></i> Siguiendo</h3>
                     
@@ -93,11 +93,15 @@
                         <div class="following-content">
                             <img src="{{ url_for('static', filename='assets/uploads/users/' + follower[2]) }}" class="avatar" alt="foto de perfil">
                             <div class="info-text">
-                                <p class="author-name"><a href="#">{{ follower[1] }}</a></p>
-                                <button><i class="fas fa-user-times"></i> Dejar de Seguir</button>
+                                <p class="author-name"><a href="{{ url_for('profile_blueprint.profile', username=follower[1]) }}">{{ follower[1] }}</a></p>
+                                <button><i class="fas fa-user-times"></i> <a href="#">Dejar de Seguir</a></button>
                             </div>
                         </div>
                     {% endfor %}
+
+                    {% if get_followers == [] %}
+                        <p class="txt-suggests">No hay seguidores</p>
+                    {% endif %}
                 </div>
 
                 <div class="follows-container">
@@ -107,11 +111,15 @@
                         <div class="follow-content">
                             <img src="{{ url_for('static', filename='assets/uploads/users/' + suggest[2]) }}" class="avatar" alt="foto de perfil">
                             <div class="info-text">
-                                <p class="author-name"><a href="#">{{ suggest[1] }}</a></p>
-                                <button><i class="fas fa-user-plus"></i> <a href="#"> Seguir</a></button>
+                                <p class="author-name"><a href="{{ url_for('profile_blueprint.profile', username=suggest[1]) }}">{{ suggest[1] }}</a></p>
+                                <button><i class="fas fa-user-plus"></i> <a href="{{ url_for('follow_blueprint.follow', id_following=suggest[0]) }}"> Seguir</a></button>
                             </div>
                         </div>
                     {% endfor %}
+
+                    {% if get_suggests == [] %}
+                        <p class="txt-suggests">No hay sugerencias</p>
+                    {% endif %}
                 </div>
             {% endif %}
         </div>

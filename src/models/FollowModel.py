@@ -1,3 +1,6 @@
+#FOLLOWER -> SIGUE
+#FOLLOWING -> SEGUIDO
+
 from src.utils.Logger import Logger
 import traceback
 
@@ -33,10 +36,10 @@ class Follow:
             cursor = connection.cursor()
 
             select_query = """
-                SELECT u.id_user, u.username, u.photo, f.*
-                FROM public.users u
-                JOIN public.followers f ON u.id_user = f.id_following
-                WHERE f.id_follower = %s
+                SELECT users.id_user, users.username, users.photo, followers.*
+                FROM users
+                JOIN followers ON users.id_user = followers.id_following
+                WHERE followers.id_follower = %s
                 ORDER BY RANDOM() LIMIT 3;
             """
 
@@ -94,6 +97,55 @@ class Follow:
             Logger.add_to_log("error", str(ex))
             Logger.add_to_log("error", traceback.format_exc())
 
+        finally:
+            cursor.close()
+            connection.close()
+    
+    def get_follower_following(connection, id_user):
+        try:
+            cursor = connection.cursor()
+
+            select_query = """
+                SELECT
+                    (SELECT COUNT(*) FROM followers WHERE id_following = %s),
+                    (SELECT COUNT(*) FROM followers WHERE id_follower = %s)
+            """
+            data = (id_user, id_user)
+
+            cursor.execute(select_query, data)
+
+            info_follwer_following = cursor.fetchall()
+
+            return info_follwer_following
+        
+        except Exception as ex:
+            Logger.add_to_log('error', str(ex))
+            Logger.add_to_log('errot', traceback.format_exc())
+        
+        finally:
+            cursor.close()
+            connection.close()
+    
+    @staticmethod
+    def check_verefy_following(connection, id_follower, id_following):
+        try:
+            cursor = connection.cursor()
+
+            check_query = "SELECT COUNT(*) FROM followers WHERE id_follower = %s AND id_following = %s"
+            check_data = (id_follower, id_following)
+
+            cursor.execute(check_query, check_data)
+            check_result = cursor.fetchone()
+
+            if check_result[0] > 0:
+                return True
+            else:
+                return False
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+        
         finally:
             cursor.close()
             connection.close()

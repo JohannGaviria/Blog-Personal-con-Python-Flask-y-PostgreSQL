@@ -369,3 +369,9 @@
     text-align: right;
     margin-left: auto;
 }
+
+.txt-suggests {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--color-button-bg-light);
+}

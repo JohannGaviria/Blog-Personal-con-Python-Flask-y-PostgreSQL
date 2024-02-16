@@ -23,7 +23,11 @@
                     {% if info_profile[0] == session['id_user'] %}
                         <a href="{{ url_for('editProfile_blueprint.edit_profile') }}">Editar Perfil</a>
                     {% else %}
-                        <a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a>
+                        {% if check_following %}
+                            <a href="#">Dejar de Seguir</a>
+                        {% else %}
+                            <a href="{{ url_for('follow_blueprint.follow', id_following=info_profile[0]) }}">Seguir</a>
+                        {% endif %}
                     {% endif %}
                 </div>
             
@@ -34,11 +38,11 @@
 
             {% for info_quantity in info_quantity %}
                 <div class="info-left">
-                    <p><i class="fas fa-user-friends"></i> seguidores</p>
-                    <p><i class="fas fa-user-check"></i> seguidos</p>
+                    <p><i class="fas fa-user-friends"></i> {{ info_quantity[0] }} seguidores</p>
+                    <p><i class="fas fa-user-check"></i> {{ info_quantity[1] }} seguidos</p>
                     <hr>
-                    <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[0] }} publicaciones</p>
-                    <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[1] }} comentarios</p>
+                    <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[2] }} publicaciones</p>
+                    <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[3] }} comentarios</p>
                 </div>
             {% endfor %}
 
