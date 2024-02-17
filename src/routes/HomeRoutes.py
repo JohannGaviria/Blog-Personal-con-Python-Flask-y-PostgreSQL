@@ -3,6 +3,7 @@ from src.utils.Logger import Logger
 from src.database.connection import connectionDB
 from src.models.PostModel import GetPosts
 from src.models.FollowModel import Follow
+from src.models.FavoriteModel import Favorite
 import traceback
 
 
@@ -63,13 +64,38 @@ def get_suggest_follwer():
         cursor.close()
         connection.close()
 
+
+def check_verefy_favorite(id_post, id_user):
+    try:
+        connection = connectionDB()
+        cursor = connection.cursor()
+
+        check_verefy_favorite = Favorite.check_favorite(connection, id_post, id_user)
+
+        return check_verefy_favorite
+
+    except Exception as ex:
+        Logger.add_to_log("error", str(ex))
+        Logger.add_to_log("error", traceback.format_exc())
+
+    finally:
+        cursor.close()
+        connection.close()
+
+
 @main.route('/', methods=['GET', 'POST'])
 def home():
     get_posts = get_post()
     get_followers = get_follower()
     get_suggests = get_suggest_follwer()
 
-    print(f"####################\n{get_suggests}\n###################")
+    id_post = [id_post[0] for id_post in get_posts]
+    check_favorite_list = []
 
+    for id_post in id_post:
+        print(f"####################\n{id_post}\n###################")
+        check_favorite = check_verefy_favorite(id_post, session['id_user'])
+        check_favorite_list.append(check_favorite)
 
-    return render_template('app/home.html', get_posts=get_posts, get_followers=get_followers, get_suggests=get_suggests, name_page="Inicio")
+    zipped_data = zip(get_posts, check_favorite_list)
+    return render_template('app/home.html', zipped_data=zipped_data, get_followers=get_followers, get_suggests=get_suggests, name_page="Inicio")

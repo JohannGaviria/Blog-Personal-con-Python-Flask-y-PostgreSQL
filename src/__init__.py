@@ -1,5 +1,5 @@
 from flask import Flask
-from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes, EditAccountRoutes, DeleteAccountRoutes, FollowRoutes, LeaveFollowRoutes
+from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes, EditAccountRoutes, DeleteAccountRoutes, FollowRoutes, LeaveFollowRoutes, AddFavoritesRoutes, DeleteFavoriteRoutes
 
 
 app = Flask(__name__)
@@ -18,6 +18,9 @@ def init_app(config):
 
     app.register_blueprint(FollowRoutes.main, url_prefix='/app/follow')
     app.register_blueprint(LeaveFollowRoutes.main, url_prefix='/app/leaveFollow')
+
+    app.register_blueprint(AddFavoritesRoutes.main, url_prefix='/app/addFavorite')
+    app.register_blueprint(DeleteFavoriteRoutes.main, url_prefix='/app/deleteFavorite')
 
     app.register_blueprint(NewPostRoutes.main, url_prefix='/app/newPost')
     app.register_blueprint(ViewPostRoutes.main, url_prefix='/app/viewPost')

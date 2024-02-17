@@ -40,7 +40,7 @@
                 {% endif %}
             </div>
 
-            {% for post in get_posts %}
+            {% for post, is_favorite in zipped_data %}
 
             <div class="post-cards-container">
                 <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}">
@@ -67,9 +67,17 @@
                             <div class="comments">
                                 <a href="{{ url_for('viewPost_blueprint.view_post', id_post=post[0]) }}#comments-box"><i class="far fa-comment"></i> Comentarios</a>
                             </div>
-                            <div class="favorite">
-                                <a href="#"><i class="far fa-bookmark"></i> Favorito</a>
-                            </div>
+                            
+                            {% if is_favorite %}
+                                <div class="favorite">
+                                    <a href="{{ url_for('deleteFavorite_blueprint.delete_favorite', id_post=post[0]) }}"><i class="fas fa-bookmark"></i> Favorito</a>
+                                </div>
+                            {% else %}
+                                <div class="favorite">
+                                    <a href="{{ url_for('addFavorite_blueprint.add_favorite', id_post=post[0]) }}"><i class="far fa-bookmark"></i> Favorito</a>
+                                </div>
+                            {% endif %}
+
                             <div class="time-read">
                                 <p><i class="fas fa-book"></i> {{ post[6] }}</p>
                             </div>
