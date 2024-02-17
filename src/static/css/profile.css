@@ -76,7 +76,7 @@
     margin: 20px 10px 20px 0;
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 165px;
+    height: 205px;
 }
 
 .info-left p {
@@ -132,6 +132,13 @@
 .post-down {
     padding: 10px;
     text-align: right;
+    color: var(--color-text-secondary-light);
+    margin-right: 10px;
+}
+
+.post-down a {
+    float: left;
+    margin-left: 10px;
     color: var(--color-text-secondary-light);
 }
 

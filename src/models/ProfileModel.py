@@ -87,24 +87,31 @@ class Profile:
                     followers_totals.total_followers,
                     followers_totals.total_following,
                     posts_totals.total_posts,
-                    posts_totals.total_comments
+                    posts_totals.total_comments,
+                    favorites_totals.total_favorites
                 FROM
-                    (SELECT
-                        (SELECT COUNT(*) FROM public.followers WHERE id_following = %s) AS total_followers,
-                        (SELECT COUNT(*) FROM public.followers WHERE id_follower = %s) AS total_following
+                    (
+                        SELECT
+                            (SELECT COUNT(*) FROM public.followers WHERE id_following = %s) AS total_followers,
+                            (SELECT COUNT(*) FROM public.followers WHERE id_follower = %s) AS total_following
                     ) AS followers_totals,
-                    (SELECT
-                        COUNT(DISTINCT posts.id_post) AS total_posts,
-                        COUNT(DISTINCT post_comments.id_comment) AS total_comments
-                    FROM
-                        posts
-                        LEFT JOIN post_comments ON post_comments.id_post = posts.id_post
-                    WHERE
-                        posts.id_user = %s
-                    ) AS posts_totals;
-
+                    (
+                        SELECT
+                            COUNT(DISTINCT posts.id_post) AS total_posts,
+                            COUNT(DISTINCT post_comments.id_comment) AS total_comments
+                        FROM
+                            posts
+                            LEFT JOIN post_comments ON post_comments.id_post = posts.id_post
+                        WHERE
+                            posts.id_user = %s
+                    ) AS posts_totals,
+                    (
+                        SELECT COUNT(*) AS total_favorites
+                        FROM favorites
+                        WHERE id_user = %s
+                    ) AS favorites_totals;
             """
-            data = (id_user, id_user, id_user)
+            data = (id_user, id_user, id_user, id_user)
 
             self.cursor.execute(select_query, data)
 

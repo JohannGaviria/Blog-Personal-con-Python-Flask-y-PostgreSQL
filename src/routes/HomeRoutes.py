@@ -93,8 +93,7 @@ def home():
     check_favorite_list = []
 
     for id_post in id_post:
-        print(f"####################\n{id_post}\n###################")
-        check_favorite = check_verefy_favorite(id_post, session['id_user'])
+        check_favorite = check_verefy_favorite(id_post, session.get('id_user'))
         check_favorite_list.append(check_favorite)
 
     zipped_data = zip(get_posts, check_favorite_list)

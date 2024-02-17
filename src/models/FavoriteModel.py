@@ -31,12 +31,19 @@ class Favorite:
             cursor.close()
             connection.close()
 
-    def get_favorite(self, connection):
+    @staticmethod
+    def get_favorite(connection, id_user):
         try:
             cursor = connection.cursor()
 
-            select_query = "SELECT * FROM favorites WHERE id_user = %s"
-            data = (self.id_user,)
+            select_query = """
+                SELECT users.id_user, users.photo, users.username, posts.id_post, posts.title, posts.publication_date, posts.reading_time, favorites.id_favorite
+                FROM users
+                JOIN favorites ON users.id_user = favorites.id_user
+                JOIN posts ON favorites.id_post = posts.id_post
+                WHERE users.id_user = %s;
+            """
+            data = (id_user,)
 
             cursor.execute(select_query, data)
 

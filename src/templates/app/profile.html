@@ -38,17 +38,19 @@
 
             {% for info_quantity in info_quantity %}
                 <div class="info-left">
-                    <p style="text-decoration: none;"><i class="fas fa-user-friends"></i> {{ info_quantity[0] }} seguidores</p>
-                    <p style="text-decoration: none;"><i class="fas fa-user-check"></i> {{ info_quantity[1] }} seguidos</p>
+                    <p style="text-decoration: none;"><i class="fas fa-user-friends"></i> {{ info_quantity[0] }} Seguidores</p>
+                    <p style="text-decoration: none;"><i class="fas fa-user-check"></i> {{ info_quantity[1] }} Seguidos</p>
                     <hr>
-                    <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[2] }} publicaciones</p>
-                    <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[3] }} comentarios</p>
+                    <p id="btn-publication"><i class="fas fa-newspaper"></i> {{ info_quantity[2] }} Publicaciones</p>
+                    <p id="btn-comment"><i class="fas fa-comment"></i> {{ info_quantity[3] }} Comentarios</p>
+                    <p {% for info_profile in info_profile %} {% if info_profile[0] == session['id_user'] %} id="btn-favorite" {% else %} style="text-decoration: none;" {%endif%} {% endfor %}><i class="fas fa-bookmark"></i> {{ info_quantity[4] }} Favoritos</p>
                 </div>
             {% endfor %}
 
             <div class="info-right">
 
                 <div id="post-publication">
+                    <h3>Publicaciones</h3>
                     {% if info_post %}
                         {% for info_post in info_post %}
                         <div class="post-publication">
@@ -75,6 +77,7 @@
                 </div>
                 
                 <div id="post-comment" style="display: none;">
+                    <h3>Comentarios</h3>
                     {% if info_comment %}
                         {% for info_comment in info_comment %}
                             <div class="post-comment">
@@ -89,6 +92,32 @@
                             <p class="txt-action">No has realizado ningún comentario aún. <a href="#">¡Mira publicaciones de interes!</a></p>
                         {% else %}
                             <p class="txt-action">El usuario <strong>{% for info_profile in info_profile %}{{ info_profile[2] }}{% endfor %}</strong> todavia no ha comentado ninguna publicación.</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <div id="favorite" style="display: none;">
+                    <h3>Favoritos</h3>
+                    {% if info_favorite %}
+                        {% for info_favorite in info_favorite %}
+                        <div class="post-publication">
+
+                            <div class="post-top">
+                                <img src="{{ url_for('static', filename='assets/uploads/users/' + info_favorite[1]) }}" alt="{{ info_favorite[2] }}">
+                                <p>{{ info_favorite[2] }} <br> {{ info_favorite[5] }}</p>
+                            </div>
+                            <div class="post-center">
+                                <a href="{{ url_for('viewPost_blueprint.view_post', id_post=info_favorite[0]) }}"><h2>{{ info_favorite[4] }}</h2></a>
+                            </div>
+                            <div class="post-down">
+                                <a href="{{ url_for('deleteFavorite_blueprint.delete_favorite', id_post=info_favorite[3]) }}"><i class="fas fa-bookmark"></i> Favorito</a>
+                                <p><i class="fas fa-book"></i> {{ info_favorite[6] }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        {% if info_favorite[0] == session['id_user']  %}
+                            <p class="txt-action">Aún no has agregado publicaciones a Favoritos<a href="#">¡Mira publicaciones de interes!</a></p>
                         {% endif %}
                     {% endif %}
                 </div>
