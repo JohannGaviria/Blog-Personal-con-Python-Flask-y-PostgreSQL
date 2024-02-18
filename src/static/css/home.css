@@ -328,19 +328,6 @@
     color: var(--color-border-light);
 }
 
-.post-hashtag {
-    padding: 10px;
-}
-
-.post-hashtag a {
-    margin-right: 5px;
-    color: var(--color-link-hover-light);
-}
-
-.post-hashtag a:hover {
-    text-decoration: underline;
-}
-
 .comments,
 .favorite {
     display: inline-block;

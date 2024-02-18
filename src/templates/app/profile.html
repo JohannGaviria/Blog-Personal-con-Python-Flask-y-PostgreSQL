@@ -58,7 +58,6 @@
                                 <img src="{{ url_for('static', filename='assets/uploads/users/' + info_post[6]) }}" alt="{{ info_post[5] }}">
                                 <p>{{ info_post[5] }} <br> {{ info_post[2] }}</p>
                                 <div class="post-action">
-                                    <a href="#"> <i class="fas fa-edit"></i> Editar</a>
                                     <a href="{{ url_for('deletePost_blueprint.delete_post', id_post=info_post[0]) }}"> <i class="fas fa-trash-alt"></i> ELiminar</a>
                                 </div>
                             </div>

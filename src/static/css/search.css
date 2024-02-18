@@ -1,0 +1,109 @@
+@import "root.css";
+
+.search-title {
+    font-size: 28px;
+    margin-left: 50px;
+    margin-bottom: 15px;
+}
+
+.search-container {
+    display: grid;
+    grid-template-columns: .3fr 1fr;
+    gap: 20px;
+    margin-left: 50px;
+    margin-right: 70px;
+}
+
+.search-element {
+    background-color: var(--color-button-text-light);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-element p {
+    margin: 8px 0;
+}
+
+.search-element p:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.search-element i {
+    margin-right: 5px;
+}
+
+.search-element span {
+    font-weight: bold;
+    color: var(--color-accent-light);
+}
+
+#search-people-content {
+    display: none;
+}
+
+.search-post {
+    margin-bottom: 20px;
+    background-color: var(--color-button-text-light);
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-top {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--color-button-bg-light);
+}
+
+.search-top img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.search-top a {
+    color: var(--color-border-hover-light);
+}
+
+.search-top a:hover {
+    color: var(--color-text-light);
+}
+
+.search-center {
+    padding: 10px;
+}
+
+.search-center h2 {
+    margin-left: 55px;
+}
+
+.search-center h2:hover {
+    color: var(--color-border-light);
+}
+
+.post-reaction {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 50px;
+    margin-right: 15px;
+}
+
+.follow {
+    margin-left: auto;
+    padding: 5px;
+    background-color: var(--color-link-light);
+    border-radius: 10px;
+}
+
+.follow a {
+    color: var(--color-background-light);
+}
+
+.follow:hover {
+    background-color: var(--color-link-hover-light);
+}
