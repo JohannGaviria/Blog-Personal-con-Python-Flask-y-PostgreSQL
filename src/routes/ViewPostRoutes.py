@@ -75,4 +75,7 @@ def view_post(id_post):
     comments = get_post_comments(id_post)
     comment_count = get_comment_count(id_post)
 
+    print(f"####################\n{post}\n###################")
+
+
     return render_template('app/view-post.html', name_page="Vista Post", post=post, markdown_converted=markdown_converted, comments=comments, comment_count=comment_count)

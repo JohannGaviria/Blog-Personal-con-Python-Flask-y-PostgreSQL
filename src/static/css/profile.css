@@ -116,6 +116,20 @@
     margin-right: 10px;
 }
 
+.post-action {
+    margin-left: auto;
+}
+
+.post-action a {
+    color: var(--color-link-hover-light);
+    font-size: 18px;
+    margin: 5px;
+}
+
+.post-action a:hover {
+    text-decoration: underline;
+}
+
 .post-center,
 .post-comment-content {
     padding: 10px;

@@ -7,6 +7,25 @@ class Posts:
         self.cover_image = cover_image
         self.title = title
         self.content = content
+    
+    @staticmethod
+    def delete_post(connection, id_post):
+        try:
+            cursor = connection.cursor()
+
+            cursor.execute("DELETE FROM favorites WHERE id_post = %s", (id_post,))
+            cursor.execute("DELETE FROM post_comments WHERE id_post = %s", (id_post,))
+            cursor.execute("DELETE FROM posts WHERE id_post = %s", (id_post,))
+
+            connection.commit()
+
+        except Exception as ex:
+            Logger.add_to_log("error", str(ex))
+            Logger.add_to_log("error", traceback.format_exc())
+
+        finally:
+            cursor.close()
+            connection.close()
 
 
 class NewPost(Posts):

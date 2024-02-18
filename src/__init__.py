@@ -1,5 +1,5 @@
 from flask import Flask
-from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes, EditAccountRoutes, DeleteAccountRoutes, FollowRoutes, LeaveFollowRoutes, AddFavoritesRoutes, DeleteFavoriteRoutes
+from .routes import IndexRoutes, LoginRoutes, RegisterRoutes, HomeRoutes, NewPostRoutes, ViewPostRoutes, RecentPostsRoutes, RelevantPostsRoutes, NewCommentRoutes, ProfileRoutes, EditProfileRoutes, LogoutRoutes, EditAccountRoutes, DeleteAccountRoutes, FollowRoutes, LeaveFollowRoutes, AddFavoritesRoutes, DeleteFavoriteRoutes, DeletePostsRoutes
 
 
 app = Flask(__name__)
@@ -27,6 +27,7 @@ def init_app(config):
     app.register_blueprint(NewCommentRoutes.main, url_prefix='/app/viewPost')
     app.register_blueprint(RecentPostsRoutes.main, url_prefix='/app/recentPost')
     app.register_blueprint(RelevantPostsRoutes.main, url_prefix='/app/relevantPost')
+    app.register_blueprint(DeletePostsRoutes.main, url_prefix='/app/deletePost')
 
     app.register_blueprint(RegisterRoutes.main, url_prefix='/app/auth/register')
     app.register_blueprint(LoginRoutes.main, url_prefix='/app/auth/login')
