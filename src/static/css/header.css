@@ -185,12 +185,21 @@
     background-color: var(--color-background-light);
 }
 
-.search-field i{
+.search-field button{
     position: absolute;
     color: var(--color-border-light);
     right: 15px;
     font-size: 22px;
     cursor: pointer;
+    background-color: transparent;
+}
+
+.search-field button:hover {
+    background-color: transparent;
+}
+
+.search-field button i:hover {
+    color: var(--color-border-focus-light);
 }
 
 .actions-buttons {

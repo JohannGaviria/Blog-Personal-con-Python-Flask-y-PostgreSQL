@@ -107,3 +107,8 @@
 .follow:hover {
     background-color: var(--color-link-hover-light);
 }
+
+.txt-result {
+    text-align: center;
+    font-size: 34px;
+}

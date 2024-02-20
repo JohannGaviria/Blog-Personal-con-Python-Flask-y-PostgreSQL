@@ -34,7 +34,7 @@ def get_follower():
         connection = connectionDB()
         cursor = connection.cursor()
 
-        get_followers = Follow.get_followers(connection, session['id_user'])
+        get_followers = Follow.get_followers(connection, session.get('id_user'))
 
         return get_followers
 
@@ -52,7 +52,7 @@ def get_suggest_follwer():
         connection = connectionDB()
         cursor = connection.cursor()
 
-        get_suggest_follwers = Follow.suggest_followers(connection, session['id_user'])
+        get_suggest_follwers = Follow.suggest_followers(connection, session.get('id_user'))
 
         return get_suggest_follwers
 
