@@ -135,3 +135,13 @@
     color: var(--color-link-hover-light);
     text-decoration: underline;
 }
+
+/* DESING RESPONSIVE */
+/* MOVIL */
+
+@media (max-width: 767px), (max-width: 1024px) {
+    .view-post,
+    .comments-box {
+        width: 100%;
+    }
+}

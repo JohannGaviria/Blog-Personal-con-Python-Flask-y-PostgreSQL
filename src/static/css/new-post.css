@@ -382,3 +382,17 @@
 .cancellation-content button:hover {
     background-color: var(--color-link-hover-light);
 }
+
+/* DESING RESPONSIVE */
+/* MOVIL */
+
+@media (max-width: 767px), (max-width: 1024px) {
+    .new-post-form form,
+    .view-post-content {
+        width: 100%;
+    }
+
+    .form-post-elements {
+        margin-left: 0;
+    }
+}

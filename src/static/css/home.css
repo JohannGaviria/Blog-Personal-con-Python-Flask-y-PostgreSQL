@@ -210,44 +210,6 @@
     background-color: var(--color-button-text-light);
 }
 
-
-
-/* DESING RESPONSIVE */
-
-/* Estilos para tabletas */
-@media (min-width: 768px) and (max-width: 1070px) {
-    .contenedor {
-        grid-template-columns: 200px auto;
-    }
-
-    .right-column {
-        display: none;
-    }
-
-}
-
-
-/* moviles */
-@media (max-width: 767px) {
-    .contenedor {
-        grid-template-columns: auto;
-        grid-template-areas: "center-content";
-    }
-
-    .left-column,
-    .right-column {
-        display: none;
-    }
-
-    .center-content {
-        grid-area: center-content;
-    }
-}
-
-
-
-
-
 /* CARD */
 
 .post-cards-container {
@@ -361,4 +323,34 @@
     text-align: center;
     margin-top: 10px;
     color: var(--color-button-bg-light);
+}
+
+/* DESING RESPONSIVE */
+/* moviles */
+
+@media (max-width: 767px) {
+    .contenedor {
+        grid-template-columns: auto;
+        grid-template-areas: "center-content";
+    }
+
+    .left-column,
+    .right-column {
+        display: none;
+    }
+
+    .center-content {
+        grid-area: center-content;
+    }
+}
+
+/* Estilos para tabletas */
+@media (min-width: 768px) and (max-width: 1070px) {
+    .contenedor {
+        grid-template-columns: 200px auto;
+    }
+
+    .right-column {
+        display: none;
+    }
 }
